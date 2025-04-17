@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import StrengthTrainingArticle from "@/components/blog/StrengthTrainingArticle";
+import NutritionArticle from "@/components/blog/NutritionArticle";
 
 // This would typically come from a CMS or database
 const blogPosts = {
@@ -21,100 +22,6 @@ const blogPosts = {
     category: "Nutrition",
     readTime: "8 min read",
     imageUrl: "/placeholder.svg?height=800&width=1200",
-    content: `
-      <p class="lead">Building muscle requires more than just lifting weights—it demands a strategic approach to nutrition that supports recovery, growth, and performance. This article explores the science-backed nutrition principles that can maximize your muscle-building potential.</p>
-      
-      <h2>Caloric Surplus: The Foundation of Growth</h2>
-      
-      <p>To build new muscle tissue, your body needs energy beyond what it requires for basic functions and daily activities. This extra energy comes from consuming more calories than you burn—a state known as a caloric surplus.</p>
-      
-      <p>For most people, a modest surplus of 250-500 calories above maintenance is ideal for maximizing muscle growth while minimizing fat gain. Larger surpluses may accelerate muscle gain slightly but often come with significant fat accumulation.</p>
-      
-      <h2>Protein: The Building Blocks</h2>
-      
-      <p>Protein provides the amino acids necessary for muscle repair and growth. Research consistently shows that strength-training individuals benefit from higher protein intakes than the general population.</p>
-      
-      <p>Aim for 1.6-2.2g of protein per kilogram of bodyweight, spread across 4-5 meals throughout the day. This approach maximizes muscle protein synthesis and provides a steady stream of amino acids to your muscles.</p>
-      
-      <p>Quality protein sources include:</p>
-      
-      <ul>
-        <li>Lean meats (chicken, turkey, lean beef)</li>
-        <li>Fish and seafood</li>
-        <li>Eggs</li>
-        <li>Dairy (Greek yogurt, cottage cheese, whey protein)</li>
-        <li>Plant-based options (tofu, tempeh, legumes, protein powders)</li>
-      </ul>
-      
-      <h2>Carbohydrates: Fuel for Performance</h2>
-      
-      <p>Carbohydrates are your muscles' preferred energy source during high-intensity training. They also play a crucial role in recovery by replenishing muscle glycogen stores and creating an anabolic environment through insulin release.</p>
-      
-      <p>For muscle growth, prioritize carbohydrates around your training:</p>
-      
-      <ul>
-        <li><strong>Pre-workout:</strong> 25-40g of easily digestible carbs 1-2 hours before training</li>
-        <li><strong>Post-workout:</strong> 40-80g of fast-digesting carbs within 30-60 minutes after training</li>
-        <li><strong>Daily intake:</strong> 4-7g per kilogram of bodyweight, depending on training volume and individual response</li>
-      </ul>
-      
-      <p>Focus on quality carbohydrate sources like rice, potatoes, oats, fruits, and whole grains for sustained energy and micronutrients.</p>
-      
-      <h2>Fats: Hormonal Support</h2>
-      
-      <p>Dietary fats play a crucial role in hormone production, including testosterone and growth hormone, which are essential for muscle growth. They also provide energy, support cell membrane health, and aid in vitamin absorption.</p>
-      
-      <p>Aim for 0.5-1g of fat per kilogram of bodyweight, with an emphasis on healthy sources:</p>
-      
-      <ul>
-        <li>Avocados</li>
-        <li>Nuts and seeds</li>
-        <li>Olive oil</li>
-        <li>Fatty fish (salmon, mackerel)</li>
-        <li>Egg yolks</li>
-      </ul>
-      
-      <h2>Meal Timing and Frequency</h2>
-      
-      <p>While total daily intake is most important, strategic meal timing can optimize muscle growth:</p>
-      
-      <ul>
-        <li><strong>Eat every 3-4 hours</strong> to maintain elevated muscle protein synthesis</li>
-        <li><strong>Consume protein before bed</strong> to support overnight recovery (casein protein is ideal)</li>
-        <li><strong>Prioritize post-workout nutrition</strong> with protein and carbohydrates</li>
-      </ul>
-      
-      <h2>Hydration: The Overlooked Factor</h2>
-      
-      <p>Proper hydration is essential for optimal performance and recovery. Even mild dehydration can impair strength, power, and endurance. Aim for at least 3-4 liters of water daily, with additional fluids during training.</p>
-      
-      <h2>Supplements Worth Considering</h2>
-      
-      <p>While whole foods should form the foundation of your nutrition plan, certain supplements can provide additional benefits:</p>
-      
-      <ul>
-        <li><strong>Whey Protein:</strong> Convenient source of high-quality protein</li>
-        <li><strong>Creatine Monohydrate:</strong> Well-researched supplement that improves strength, power, and muscle growth</li>
-        <li><strong>Vitamin D:</strong> Important for hormone production and overall health</li>
-        <li><strong>Omega-3 Fatty Acids:</strong> Support recovery and reduce inflammation</li>
-      </ul>
-      
-      <h2>Adjusting for Individual Response</h2>
-      
-      <p>Nutrition is highly individual. Monitor your progress by tracking body measurements, strength gains, and energy levels. Make adjustments based on your results:</p>
-      
-      <ul>
-        <li>If gaining too much fat, reduce your caloric surplus</li>
-        <li>If not gaining muscle, increase calories or adjust macronutrient ratios</li>
-        <li>If recovery is poor, evaluate carbohydrate intake and overall calories</li>
-      </ul>
-      
-      <h2>Conclusion</h2>
-      
-      <p>Effective nutrition for muscle growth combines adequate calories, optimal macronutrient ratios, strategic timing, and consistency. By implementing these science-backed strategies and adjusting based on your individual response, you'll create the ideal environment for your body to build and maintain muscle mass.</p>
-      
-      <p>Remember that nutrition is just one piece of the puzzle—it works in conjunction with proper training, adequate sleep, and stress management to produce optimal results.</p>
-    `,
   },
   "mindset-transformation": {
     title: "The Mental Side of Physical Transformation",
@@ -248,6 +155,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   // Render the strength training article component for that specific slug
   if (params.slug === "strength-training-basics") {
     return <StrengthTrainingArticle post={post} />;
+  }
+
+  // Render the nutrition article component for that specific slug
+  if (params.slug === "nutrition-for-muscle-growth") {
+    return <NutritionArticle post={post} />;
   }
 
   return (
