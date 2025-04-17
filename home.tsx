@@ -4,15 +4,11 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ChevronDown,
-  Instagram,
-  Linkedin,
-  Mail,
-  ArrowRight,
-  Dumbbell,
-} from "lucide-react";
+import { ArrowRight, Dumbbell } from "lucide-react";
 import BlogPreview from "@/components/blog-preview";
+import { SessionControl } from "@audentic/react";
+import { FaInstagram, FaLinkedin, FaMailBulk } from "react-icons/fa";
+import { SocialIcon } from "react-social-icons";
 
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -27,6 +23,20 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Voice agent widget settings
+  const widgetSettings = {
+    showBackgroundCard: false,
+    title: "Start Your Journey",
+    backgroundColor: "#f1f5fd",
+    textColor: "#192857",
+    width: "200",
+    height: "100",
+    buttonText: "Start Your Journey",
+    primaryColor: "#6366f1",
+    buttonTextColor: "#FFFFFF",
+    borderRadius: "12",
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 via-powder-blue to-gray-200 text-gray-800 overflow-hidden">
@@ -202,7 +212,7 @@ export default function Home() {
             </h2>
             <p className="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
               Just as steel becomes stronger through the right combination of
-              elements, Ajay’s adaptive Alloy Method fuses three powerful
+              elements, Ajay's adaptive Alloy Method fuses three powerful
               components to forge lasting transformation:
             </p>
 
@@ -457,7 +467,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-indigo-100 py-12">
+      <footer className="relative z-10 border-t border-indigo-100 py-6">
         <div className="container mx-auto px-4 md:flex justify-between items-center">
           <div className="text-center md:text-left mb-8 md:mb-0">
             <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700 mb-2">
@@ -467,38 +477,48 @@ export default function Home() {
               © 2025 The Iron Edit by Ajay Pal Singh. All rights reserved.
             </p>
           </div>
-          <div className="flex justify-center md:justify-end gap-6">
-            <motion.a
-              href="https://www.instagram.com/ajayraksh/"
-              className="text-gray-600 hover:text-indigo-600 flex items-center gap-2 transition-colors"
+          <div
+            className="flex justify-center md:justify-end gap-6"
+            style={{ position: "relative", right: "120px" }}
+          >
+            <SocialIcon
+              url="https://www.instagram.com/ajayraksh/"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-            >
-              <Instagram className="h-5 w-5" />
-              <span>Instagram</span>
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/ajay-pal-singh-6613087/"
-              className="text-gray-600 hover:text-indigo-600 flex items-center gap-2 transition-colors"
+              style={{ height: 40, width: 40 }}
+              label="Instagram"
+            />
+            <SocialIcon
+              url="https://www.linkedin.com/in/ajay-pal-singh-6613087/"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-            >
-              <Linkedin className="h-5 w-5" />
-              <span>LinkedIn</span>
-            </motion.a>
-            <motion.a
-              href="/contact"
-              className="text-gray-600 hover:text-indigo-600 flex items-center gap-2 transition-colors"
-              whileHover={{ scale: 1.1 }}
-            >
-              <Mail className="h-5 w-5" />
-              <span>Contact</span>
-            </motion.a>
+              style={{ height: 40, width: 40 }}
+              label="LinkedIn"
+            />
+            <SocialIcon
+              network="email"
+              url="/contact"
+              style={{ height: 40, width: 40 }}
+              label="Contact"
+            />
           </div>
         </div>
       </footer>
+
+      {/* Floating Voice Agent */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          zIndex: 50,
+        }}
+      >
+        <SessionControl
+          agentId="86428eac-3eeb-4d06-8115-15703b785266"
+          widgetConfiguration={widgetSettings}
+        />
+      </div>
     </div>
   );
 }
