@@ -1,11 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import StrengthTrainingArticle from "@/components/blog/StrengthTrainingArticle";
 import NutritionArticle from "@/components/blog/NutritionArticle";
+import MindsetArticle from "@/components/blog/MindsetArticle";
 
 // This would typically come from a CMS or database
 const blogPosts = {
@@ -29,104 +27,6 @@ const blogPosts = {
     category: "Mindset",
     readTime: "5 min read",
     imageUrl: "/placeholder.svg?height=800&width=1200",
-    content: `
-      <p class="lead">Physical transformation begins in the mind. While training programs and nutrition plans are essential, it's often the mental aspects that determine long-term success. This article explores how developing the right mindset can be the catalyst for achieving lasting physical change.</p>
-      
-      <h2>The Psychology of Transformation</h2>
-      
-      <p>Physical transformation is as much a mental journey as it is a physical one. Research in sports psychology consistently shows that mental factors like motivation, self-belief, and resilience significantly impact physical performance and adherence to fitness programs.</p>
-      
-      <p>Understanding the psychological principles that drive behavior change can help you develop strategies to overcome obstacles and maintain momentum throughout your fitness journey.</p>
-      
-      <h2>Identity-Based Habits</h2>
-      
-      <p>One of the most powerful mindset shifts involves changing how you view yourself. Instead of focusing solely on outcome-based goals ("I want to lose 20 pounds"), consider identity-based habits ("I am someone who exercises regularly").</p>
-      
-      <p>When you build habits around a new identity, behavior change becomes more natural and sustainable. You're no longer trying to force yourself to do something—you're simply acting in alignment with who you believe yourself to be.</p>
-      
-      <p>Ask yourself: "Who is the type of person who could achieve the goals I want to achieve?" Then, prove to yourself that you are that person through small, consistent actions.</p>
-      
-      <h2>Developing Mental Toughness</h2>
-      
-      <p>Mental toughness—the ability to persist through discomfort and adversity—is crucial for physical transformation. It's what gets you to the gym on days when motivation is low and helps you push through challenging workouts.</p>
-      
-      <p>Strategies to build mental toughness include:</p>
-      
-      <ul>
-        <li><strong>Embracing discomfort:</strong> Deliberately seeking out challenging situations in training</li>
-        <li><strong>Visualization:</strong> Mentally rehearsing successful performance and overcoming obstacles</li>
-        <li><strong>Positive self-talk:</strong> Developing and practicing empowering internal dialogue</li>
-        <li><strong>Setting process goals:</strong> Focusing on actions within your control rather than just outcomes</li>
-      </ul>
-      
-      <h2>The Growth Mindset Advantage</h2>
-      
-      <p>People with a growth mindset believe that abilities can be developed through dedication and hard work. This view creates a love of learning and resilience that is essential for great accomplishment in any field, including fitness.</p>
-      
-      <p>To cultivate a growth mindset:</p>
-      
-      <ul>
-        <li>View challenges as opportunities to grow</li>
-        <li>Embrace failure as a learning experience</li>
-        <li>Focus on the process rather than just the outcome</li>
-        <li>Celebrate effort and persistence, not just results</li>
-        <li>Seek feedback and use it constructively</li>
-      </ul>
-      
-      <h2>Overcoming Mental Barriers</h2>
-      
-      <p>Common mental barriers to physical transformation include:</p>
-      
-      <h3>1. All-or-Nothing Thinking</h3>
-      
-      <p>The belief that you must follow your program perfectly or you've failed. This mindset leads to giving up after small setbacks.</p>
-      
-      <p><strong>Solution:</strong> Adopt the "never miss twice" rule. If you miss a workout or meal, ensure you don't miss the next one. Consistency, not perfection, drives results.</p>
-      
-      <h3>2. Immediate Gratification Bias</h3>
-      
-      <p>The tendency to choose immediate rewards (comfort, convenience) over long-term benefits (health, fitness).</p>
-      
-      <p><strong>Solution:</strong> Use "temptation bundling"—pair activities you need to do with activities you want to do (e.g., watching your favorite show only while on the treadmill).</p>
-      
-      <h3>3. Negative Self-Image</h3>
-      
-      <p>Limiting beliefs about what you're capable of achieving.</p>
-      
-      <p><strong>Solution:</strong> Challenge negative thoughts with evidence of past successes, however small. Surround yourself with supportive people who reinforce your potential.</p>
-      
-      <h2>The Power of Habits and Systems</h2>
-      
-      <p>Sustainable transformation comes from building systems rather than relying on motivation. Motivation fluctuates, but well-designed habits and systems provide consistency.</p>
-      
-      <p>To build effective systems:</p>
-      
-      <ul>
-        <li><strong>Make it obvious:</strong> Set clear cues for your desired behaviors (e.g., laying out workout clothes the night before)</li>
-        <li><strong>Make it attractive:</strong> Find ways to enjoy the process (e.g., listening to podcasts during cardio)</li>
-        <li><strong>Make it easy:</strong> Reduce friction for positive behaviors (e.g., joining a gym close to home or work)</li>
-        <li><strong>Make it satisfying:</strong> Create immediate rewards for long-term behaviors (e.g., tracking workouts in a journal)</li>
-      </ul>
-      
-      <h2>Mindfulness and Body Awareness</h2>
-      
-      <p>Developing mindfulness—the ability to be fully present and engaged in the moment—can significantly enhance your physical transformation journey. Mindfulness improves exercise quality, helps regulate eating behaviors, and reduces stress.</p>
-      
-      <p>Practice mindfulness by:</p>
-      
-      <ul>
-        <li>Focusing on muscle contractions during strength training</li>
-        <li>Paying attention to hunger and fullness cues when eating</li>
-        <li>Using breathing techniques to manage stress and improve recovery</li>
-        <li>Practicing gratitude for what your body can do, rather than focusing only on how it looks</li>
-      </ul>
-      
-      <h2>Conclusion</h2>
-      
-      <p>The mind leads and the body follows. By developing a strong mental foundation—embracing identity-based habits, cultivating mental toughness, adopting a growth mindset, overcoming common barriers, building effective systems, and practicing mindfulness—you create the conditions for lasting physical transformation.</p>
-      
-      <p>Remember that transformation is a journey, not a destination. The mental skills you develop along the way will serve you not just in your fitness pursuits, but in all areas of life.</p>
-    `,
   },
 };
 
@@ -160,6 +60,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   // Render the nutrition article component for that specific slug
   if (params.slug === "nutrition-for-muscle-growth") {
     return <NutritionArticle post={post} />;
+  }
+
+  // Render the mindset article component for that specific slug
+  if (params.slug === "mindset-transformation") {
+    return <MindsetArticle post={post} />;
   }
 
   return (
