@@ -10,7 +10,7 @@ const blogPosts = [
       "Discover the core principles of effective strength training and how to build a solid foundation for your fitness journey.",
     date: "April 15, 2025",
     category: "Training",
-    imageUrl: "/placeholder.svg?height=600&width=800",
+    imageUrl: "/ironEditGym.png",
     readTime: "6 min read",
   },
   {

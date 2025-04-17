@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import StrengthTrainingArticle from "@/components/blog/StrengthTrainingArticle";
 
 // This would typically come from a CMS or database
 const blogPosts = {
@@ -10,62 +14,6 @@ const blogPosts = {
     category: "Training",
     readTime: "6 min read",
     imageUrl: "/ironEditGym.png",
-    content: `
-      <p class="lead">Strength training is more than just lifting weights—it's a systematic approach to building muscle, increasing power, and improving overall fitness. In this comprehensive guide, we'll explore the core principles that make strength training effective.</p>
-      
-      <h2>The Science Behind Muscle Growth</h2>
-      
-      <p>When you lift weights, you create microscopic tears in your muscle fibers. During recovery, your body repairs these tears, making the muscles stronger and larger than before. This process, known as hypertrophy, is the foundation of strength training.</p>
-      
-      <p>For optimal results, you need to understand three key variables:</p>
-      
-      <ul>
-        <li><strong>Progressive Overload:</strong> Gradually increasing the weight, frequency, or number of repetitions to continually challenge your muscles.</li>
-        <li><strong>Volume:</strong> The total amount of work performed (sets × reps × weight).</li>
-        <li><strong>Recovery:</strong> Allowing adequate time between training sessions for muscles to repair and grow.</li>
-      </ul>
-      
-      <h2>Compound vs. Isolation Exercises</h2>
-      
-      <p>Compound exercises like squats, deadlifts, bench presses, and rows should form the foundation of your strength training program. These movements engage multiple muscle groups simultaneously, allowing you to lift heavier weights and stimulate more muscle growth.</p>
-      
-      <p>Isolation exercises like bicep curls, tricep extensions, and lateral raises target specific muscles and are best used as complementary movements to address weak points or aesthetic goals.</p>
-      
-      <h2>Designing Your Training Split</h2>
-      
-      <p>How you organize your training throughout the week depends on your goals, experience level, and recovery capacity. Common approaches include:</p>
-      
-      <ul>
-        <li><strong>Full-Body:</strong> Training all major muscle groups in each session, typically 2-3 times per week.</li>
-        <li><strong>Upper/Lower:</strong> Alternating between upper body and lower body days, usually 4 sessions per week.</li>
-        <li><strong>Push/Pull/Legs:</strong> Dividing training into pushing movements, pulling movements, and leg exercises, often 6 sessions per week.</li>
-      </ul>
-      
-      <p>Beginners typically benefit most from full-body routines, while more advanced lifters may prefer splits that allow greater volume for each muscle group.</p>
-      
-      <h2>The Role of Nutrition in Strength Training</h2>
-      
-      <p>Your diet plays a crucial role in your strength training results. Key nutritional considerations include:</p>
-      
-      <ul>
-        <li><strong>Protein:</strong> Aim for 1.6-2.2g per kg of bodyweight to support muscle repair and growth.</li>
-        <li><strong>Carbohydrates:</strong> Provide energy for intense training sessions and help with recovery.</li>
-        <li><strong>Fats:</strong> Support hormone production, including testosterone, which is essential for muscle growth.</li>
-        <li><strong>Caloric Intake:</strong> Slightly above maintenance for muscle gain, slightly below for fat loss while preserving muscle.</li>
-      </ul>
-      
-      <h2>Tracking Progress and Making Adjustments</h2>
-      
-      <p>Consistent progress requires systematic tracking and periodic adjustments to your program. Keep a training log to record weights, sets, and reps, and make small increases when you can complete your target repetitions with good form.</p>
-      
-      <p>Remember that progress isn't always linear. You'll experience plateaus that require changes to your training variables, such as adjusting volume, frequency, exercise selection, or even taking a deload week to allow for complete recovery.</p>
-      
-      <h2>Conclusion</h2>
-      
-      <p>Strength training is a journey that requires patience, consistency, and a willingness to learn. By understanding and applying these fundamental principles, you'll build a solid foundation for long-term progress and results.</p>
-      
-      <p>Remember, the most effective program is one that you can stick to consistently. Start with these basics, track your progress, and make adjustments based on your individual response and goals.</p>
-    `,
   },
   "nutrition-for-muscle-growth": {
     title: "Nutrition Strategies for Optimal Muscle Growth",
@@ -295,6 +243,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
     );
+  }
+
+  // Render the strength training article component for that specific slug
+  if (params.slug === "strength-training-basics") {
+    return <StrengthTrainingArticle post={post} />;
   }
 
   return (

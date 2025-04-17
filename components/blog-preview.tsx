@@ -1,6 +1,6 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 const featuredPosts = [
   {
@@ -9,7 +9,7 @@ const featuredPosts = [
     excerpt:
       "Discover the core principles of effective strength training and how to build a solid foundation for your fitness journey.",
     category: "Training",
-    imageUrl: "/placeholder.svg?height=600&width=800",
+    imageUrl: "/ironEditGym.png",
   },
   {
     id: "nutrition-for-muscle-growth",
@@ -27,7 +27,7 @@ const featuredPosts = [
     category: "Mindset",
     imageUrl: "/placeholder.svg?height=600&width=800",
   },
-]
+];
 
 export default function BlogPreview() {
   return (
@@ -38,7 +38,8 @@ export default function BlogPreview() {
             Latest from Our Blog
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Insights, tips, and strategies to help you transform your body and empower your mind.
+            Insights, tips, and strategies to help you transform your body and
+            empower your mind.
           </p>
         </div>
 
@@ -59,7 +60,9 @@ export default function BlogPreview() {
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors">{post.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors">
+                    {post.title}
+                  </h3>
                   <p className="text-gray-600 mb-4 flex-grow">{post.excerpt}</p>
                   <div className="text-indigo-600 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
                     Read More
@@ -82,5 +85,5 @@ export default function BlogPreview() {
         </div>
       </div>
     </section>
-  )
+  );
 }
