@@ -427,7 +427,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <Dumbbell className="w-16 h-16 mx-auto mb-6 text-indigo-500" />
-              <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700 break-words leading-tight">
                 READY FOR YOUR TRANSFORMATION?
               </h2>
               <p className="text-xl mb-8 text-gray-700 max-w-2xl mx-auto">

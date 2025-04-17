@@ -10,7 +10,7 @@ const blogPosts = [
       "Discover the core principles of effective strength training and how to build a solid foundation for your fitness journey.",
     date: "April 15, 2025",
     category: "Training",
-    imageUrl: "/ironEditGym.png",
+    imageUrl: "/strength.png",
     readTime: "6 min read",
   },
   {
@@ -20,7 +20,7 @@ const blogPosts = [
       "Learn the science-backed nutrition principles that maximize muscle growth and recovery for better training results.",
     date: "March 22, 2025",
     category: "Nutrition",
-    imageUrl: "/placeholder.svg?height=600&width=800",
+    imageUrl: "/smoothie.png",
     readTime: "8 min read",
   },
   {
@@ -30,7 +30,7 @@ const blogPosts = [
       "Explore how developing the right mindset is often the missing piece in achieving lasting physical transformation.",
     date: "February 10, 2025",
     category: "Mindset",
-    imageUrl: "/placeholder.svg?height=600&width=800",
+    imageUrl: "/mindset.png",
     readTime: "5 min read",
   },
 ];
