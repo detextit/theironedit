@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Dumbbell } from "lucide-react";
 import BlogPreview from "@/components/blog-preview";
 import { SessionControl } from "@audentic/react";
-import { FaInstagram, FaLinkedin, FaMailBulk } from "react-icons/fa";
 import { SocialIcon } from "react-social-icons";
 
 export default function Home() {
@@ -85,7 +84,7 @@ export default function Home() {
               Forged in Steel. Designed for Everyone.
             </p>
           </div>
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 items-center">
             <Link
               href="#about"
               className="text-gray-700 hover:text-indigo-600 transition-colors"
@@ -470,15 +469,8 @@ export default function Home() {
       <footer className="relative z-10 border-t border-indigo-100 py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-center md:text-left mb-8 md:mb-0">
-              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700 mb-2">
-                THE IRON EDIT
-              </h3>
-              <p className="text-gray-600">
-                © 2025 The Iron Edit by Ajay Pal Singh. All rights reserved.
-              </p>
-            </div>
-            <div className="flex justify-center md:justify-end gap-6">
+            {/* Social Icons Left */}
+            <div className="flex justify-left md:justify-left gap-6 mb-8 md:mb-0">
               <SocialIcon
                 url="https://www.instagram.com/ajayraksh/"
                 target="_blank"
@@ -499,6 +491,11 @@ export default function Home() {
                 style={{ height: 40, width: 40 }}
                 label="Contact"
               />
+            </div>
+            <div className="w-full text-center">
+              <p className="text-gray-600">
+                © 2025 The Iron Edit by Ajay Pal Singh. All rights reserved.
+              </p>
             </div>
           </div>
         </div>
