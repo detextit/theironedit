@@ -274,9 +274,9 @@ export default function Home() {
               </span>
             </h2>
 
-            <div className="md:flex gap-12 items-center">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
               <motion.div
-                className="md:w-1/2 mb-8 md:mb-0"
+                className="w-full md:w-1/2 mb-8 md:mb-0"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -302,7 +302,7 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                className="md:w-1/2 glass-card p-4 rounded-2xl border border-indigo-100 backdrop-blur-sm overflow-hidden"
+                className="w-full md:w-1/2 glass-card p-4 rounded-2xl border border-indigo-100 backdrop-blur-sm overflow-hidden"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -336,13 +336,13 @@ export default function Home() {
           >
             {/* Image column */}
             <motion.div
-              className="md:w-1/2 glass-card p-4 rounded-2xl border border-indigo-100 backdrop-blur-sm overflow-hidden"
+              className="w-full md:w-1/2 glass-card p-4 rounded-2xl border border-indigo-100 backdrop-blur-sm overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative h-[600px] w-full rounded-xl overflow-hidden">
+              <div className="relative aspect-square max-w-[700px] mx-auto rounded-xl overflow-hidden">
                 <Image
                   src="/mama-about.jpeg"
                   alt="Ajay Pal Singh"
@@ -355,7 +355,7 @@ export default function Home() {
 
             {/* Content column */}
             <motion.div
-              className="md:w-1/2 space-y-6"
+              className="w-full md:w-1/2 space-y-6"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -468,39 +468,38 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-indigo-100 py-6">
-        <div className="container mx-auto px-4 md:flex justify-between items-center">
-          <div className="text-center md:text-left mb-8 md:mb-0">
-            <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700 mb-2">
-              THE IRON EDIT
-            </h3>
-            <p className="text-gray-600">
-              © 2025 The Iron Edit by Ajay Pal Singh. All rights reserved.
-            </p>
-          </div>
-          <div
-            className="flex justify-center md:justify-end gap-6"
-            style={{ position: "relative", right: "120px" }}
-          >
-            <SocialIcon
-              url="https://www.instagram.com/ajayraksh/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ height: 40, width: 40 }}
-              label="Instagram"
-            />
-            <SocialIcon
-              url="https://www.linkedin.com/in/ajay-pal-singh-6613087/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ height: 40, width: 40 }}
-              label="LinkedIn"
-            />
-            <SocialIcon
-              network="email"
-              url="/contact"
-              style={{ height: 40, width: 40 }}
-              label="Contact"
-            />
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-center md:text-left mb-8 md:mb-0">
+              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700 mb-2">
+                THE IRON EDIT
+              </h3>
+              <p className="text-gray-600">
+                © 2025 The Iron Edit by Ajay Pal Singh. All rights reserved.
+              </p>
+            </div>
+            <div className="flex justify-center md:justify-end gap-6">
+              <SocialIcon
+                url="https://www.instagram.com/ajayraksh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ height: 40, width: 40 }}
+                label="Instagram"
+              />
+              <SocialIcon
+                url="https://www.linkedin.com/in/ajay-pal-singh-6613087/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ height: 40, width: 40 }}
+                label="LinkedIn"
+              />
+              <SocialIcon
+                network="email"
+                url="/contact"
+                style={{ height: 40, width: 40 }}
+                label="Contact"
+              />
+            </div>
           </div>
         </div>
       </footer>
