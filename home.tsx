@@ -362,7 +362,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <h2 className="text-4xl font-bold uppercase tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700">
-                I'M AJAY PAL SINGH.
+                I'M AJAY.
               </h2>
 
               <div className="space-y-6 text-gray-700 text-lg">
