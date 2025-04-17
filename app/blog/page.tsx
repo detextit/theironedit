@@ -33,6 +33,16 @@ const blogPosts = [
     imageUrl: "/mindset.png",
     readTime: "5 min read",
   },
+  {
+    id: "brain-training-fitness",
+    title: "Your Brain Wants a Plan, Not a Pep Talk",
+    excerpt:
+      "Explore how understanding your brain can transform vague fitness goals into achievable results backed by science.",
+    date: "March 30, 2025",
+    category: "Mindset",
+    imageUrl: "/brain.png",
+    readTime: "7 min read",
+  },
 ];
 
 export default function BlogPage() {

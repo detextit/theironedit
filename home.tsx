@@ -182,7 +182,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="relative aspect-square max-w-[500px] rounded-xl overflow-hidden border-2 border-indigo-400 shadow-2xl bg-white/70 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-indigo-400/50">
+              <div className="relative aspect-square max-w-[500px] rounded-xl overflow-hidden bg-white/70 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-indigo-400/50">
                 <Image
                   src="/ironEdit.png"
                   alt="Iron Edit"
@@ -393,19 +393,6 @@ export default function Home() {
                   something powerful!
                 </p>
               </div>
-
-              <motion.div
-                className="pt-6"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <Link
-                  href="#contact"
-                  className="inline-block bg-gradient-to-r from-indigo-500 to-indigo-700 hover:from-indigo-600 hover:to-indigo-800 text-white font-medium py-4 px-8 rounded-full uppercase tracking-wide text-center transition-all duration-300 flex items-center"
-                >
-                  WANNA HEAR MORE? <ArrowRight className="ml-2" />
-                </Link>
-              </motion.div>
             </motion.div>
           </motion.div>
         </section>
