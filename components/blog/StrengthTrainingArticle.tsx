@@ -64,6 +64,21 @@ export default function StrengthTrainingArticle({ post }: { post: PostProps }) {
 
             <CardContent className="p-8 bg-white">
               <div className="prose prose-lg max-w-none">
+                <div className="mb-8 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg shadow-sm">
+                  <p className="text-gray-800 italic">
+                    In school, I was weak in Chemistry.
+                    <br />
+                    So, which subject did I spend the most time on?
+                    <br />
+                    Pretty obvious, right?
+                    <br />
+                    <br />
+                    As we grow older, our bodies start getting weaker too.
+                    <br />
+                    So isn't it just logical to spend more time on fitness as we
+                    age?
+                  </p>
+                </div>
                 <p className="text-lg leading-relaxed text-gray-700">
                   Strength training is not just about lifting weights; it's a
                   sophisticated approach to building muscle, improving power,

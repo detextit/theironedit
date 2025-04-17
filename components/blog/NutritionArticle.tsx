@@ -61,6 +61,20 @@ export default function NutritionArticle({ post }: { post: PostProps }) {
 
             <CardContent className="p-8 bg-white">
               <div className="prose prose-lg max-w-none">
+                <div className="mb-8 p-6 bg-blue-100 border-l-4 border-blue-400 rounded">
+                  <p className="italic text-gray-700">
+                    Imagine running a factory. You put in the effort to keep it
+                    running smoothly and efficiently. But if the raw materials
+                    going in are poor or inconsistent, either the efficiency
+                    suffers—or the output does.
+                  </p>
+                  <p className="italic text-gray-700 mt-2">
+                    Working out without paying attention to nutrition is no
+                    different. It's not the smartest way to get the best
+                    results. Yet, many of us keep grinding hard at the gym while
+                    giving little thought to what fuels us.
+                  </p>
+                </div>
                 <p className="lead text-xl text-gray-700">
                   Building muscle requires more than just lifting weights—it
                   demands a strategic approach to nutrition that supports

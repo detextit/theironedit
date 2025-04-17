@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import StrengthTrainingArticle from "@/components/blog/StrengthTrainingArticle";
 import NutritionArticle from "@/components/blog/NutritionArticle";
 import MindsetArticle from "@/components/blog/MindsetArticle";
+import BrainTrainingArticle from "@/components/blog/BrainTrainingArticle";
 
 // This would typically come from a CMS or database
 const blogPosts = {
@@ -27,6 +28,13 @@ const blogPosts = {
     category: "Mindset",
     readTime: "5 min read",
     imageUrl: "/mindset.png",
+  },
+  "brain-training-fitness": {
+    title: "Your Brain Wants a Plan, Not a Pep Talk",
+    date: "March 30, 2025",
+    category: "Mindset",
+    readTime: "7 min read",
+    imageUrl: "/brain.png",
   },
 };
 
@@ -65,6 +73,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   // Render the mindset article component for that specific slug
   if (params.slug === "mindset-transformation") {
     return <MindsetArticle post={post} />;
+  }
+
+  // Render the brain training article component for that specific slug
+  if (params.slug === "brain-training-fitness") {
+    return <BrainTrainingArticle post={post} />;
   }
 
   return (
@@ -108,11 +121,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <h1 className="text-3xl md:text-4xl font-bold mb-6">
               {post.title}
             </h1>
-
-            <div
-              className="prose prose-lg max-w-none prose-indigo prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
           </div>
         </article>
       </div>
