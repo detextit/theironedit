@@ -9,7 +9,7 @@ const featuredPosts = [
     excerpt:
       "Discover the core principles of effective strength training and how to build a solid foundation for your fitness journey.",
     category: "Training",
-    imageUrl: "/ironEditGym.png",
+    imageUrl: "/strength.png",
   },
   {
     id: "nutrition-for-muscle-growth",
@@ -17,7 +17,7 @@ const featuredPosts = [
     excerpt:
       "Learn the science-backed nutrition principles that maximize muscle growth and recovery for better training results.",
     category: "Nutrition",
-    imageUrl: "/placeholder.svg?height=600&width=800",
+    imageUrl: "/smoothie.png",
   },
   {
     id: "mindset-transformation",
@@ -25,7 +25,7 @@ const featuredPosts = [
     excerpt:
       "Explore how developing the right mindset is often the missing piece in achieving lasting physical transformation.",
     category: "Mindset",
-    imageUrl: "/placeholder.svg?height=600&width=800",
+    imageUrl: "/mindset.png",
   },
 ];
 

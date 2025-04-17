@@ -12,21 +12,21 @@ const blogPosts = {
     date: "April 15, 2025",
     category: "Training",
     readTime: "6 min read",
-    imageUrl: "/ironEditGym.png",
+    imageUrl: "/strength.png",
   },
   "nutrition-for-muscle-growth": {
     title: "Nutrition Strategies for Optimal Muscle Growth",
     date: "March 22, 2025",
     category: "Nutrition",
     readTime: "8 min read",
-    imageUrl: "/placeholder.svg?height=800&width=1200",
+    imageUrl: "/smoothie.png",
   },
   "mindset-transformation": {
     title: "The Mental Side of Physical Transformation",
     date: "February 10, 2025",
     category: "Mindset",
     readTime: "5 min read",
-    imageUrl: "/placeholder.svg?height=800&width=1200",
+    imageUrl: "/mindset.png",
   },
 };
 
