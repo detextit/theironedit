@@ -101,7 +101,7 @@ export default function Home() {
               Blog
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="text-gray-700 hover:text-indigo-600 transition-colors"
             >
               Contact
@@ -127,14 +127,14 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-xl md:text-2xl mb-8 text-gray-600 max-w-3xl">
-                Welcome to Ajay Pal Singh's Iron Edit. With over 30 years of
-                experience in the Steel industry, Ajay has forged a unique
-                approach to physical transformation that builds strength,
-                resilience, and confidence for all.
+                Welcome to The Iron Edit. With over 30 years of experience in
+                the Steel industry, Ajay has forged a unique approach to
+                physical transformation that builds strength, resilience, and
+                confidence for all.
               </p>
 
               <motion.div
-                className="bg-white p-8 rounded-2xl mb-12 border border-indigo-100 shadow-lg"
+                className="bg-transparent p-8 rounded-2xl mb-12 border border-indigo-100 shadow-lg"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
@@ -201,8 +201,9 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
-              Just as steel is strengthened by combining elements, Ajay's
-              inclusive Alloy Method combines these powerful components:
+              Just as steel becomes stronger through the right combination of
+              elements, Ajay’s adaptive Alloy Method fuses three powerful
+              components to forge lasting transformation:
             </p>
 
             <div className="grid md:grid-cols-3 gap-8 mt-8">
@@ -430,7 +431,7 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   <Link
-                    href="#contact-form"
+                    href="/contact"
                     className="bg-gradient-to-r from-indigo-500 to-indigo-700 hover:from-indigo-600 hover:to-indigo-800 text-white py-4 px-8 rounded-full font-bold text-center block"
                   >
                     START YOUR JOURNEY
@@ -463,7 +464,7 @@ export default function Home() {
               THE IRON EDIT
             </h3>
             <p className="text-gray-600">
-              © 2023 The Iron Edit by Ajay Pal Singh. All rights reserved.
+              © 2025 The Iron Edit by Ajay Pal Singh. All rights reserved.
             </p>
           </div>
           <div className="flex justify-center md:justify-end gap-6">
@@ -488,7 +489,7 @@ export default function Home() {
               <span>LinkedIn</span>
             </motion.a>
             <motion.a
-              href="#contact"
+              href="/contact"
               className="text-gray-600 hover:text-indigo-600 flex items-center gap-2 transition-colors"
               whileHover={{ scale: 1.1 }}
             >

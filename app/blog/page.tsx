@@ -1,6 +1,6 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeft } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 const blogPosts = [
   {
@@ -8,7 +8,7 @@ const blogPosts = [
     title: "The Fundamentals of Strength Training",
     excerpt:
       "Discover the core principles of effective strength training and how to build a solid foundation for your fitness journey.",
-    date: "April 15, 2023",
+    date: "April 15, 2025",
     category: "Training",
     imageUrl: "/placeholder.svg?height=600&width=800",
     readTime: "6 min read",
@@ -18,7 +18,7 @@ const blogPosts = [
     title: "Nutrition Strategies for Optimal Muscle Growth",
     excerpt:
       "Learn the science-backed nutrition principles that maximize muscle growth and recovery for better training results.",
-    date: "March 22, 2023",
+    date: "March 22, 2025",
     category: "Nutrition",
     imageUrl: "/placeholder.svg?height=600&width=800",
     readTime: "8 min read",
@@ -28,31 +28,12 @@ const blogPosts = [
     title: "The Mental Side of Physical Transformation",
     excerpt:
       "Explore how developing the right mindset is often the missing piece in achieving lasting physical transformation.",
-    date: "February 10, 2023",
+    date: "February 10, 2025",
     category: "Mindset",
     imageUrl: "/placeholder.svg?height=600&width=800",
     readTime: "5 min read",
   },
-  {
-    id: "recovery-techniques",
-    title: "Advanced Recovery Techniques for Athletes",
-    excerpt:
-      "Discover cutting-edge recovery methods that help you bounce back faster and train harder for better results.",
-    date: "January 28, 2023",
-    category: "Recovery",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    readTime: "7 min read",
-  },
-  {
-    id: "home-workout-guide",
-    title: "The Ultimate Home Workout Guide",
-    excerpt: "Transform your body with minimal equipment using these effective home workout strategies and routines.",
-    date: "December 15, 2022",
-    category: "Training",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    readTime: "9 min read",
-  },
-]
+];
 
 export default function BlogPage() {
   return (
@@ -70,7 +51,8 @@ export default function BlogPage() {
             The Iron Edit Blog
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl">
-            Insights, tips, and strategies to help you transform your body and empower your mind.
+            Insights, tips, and strategies to help you transform your body and
+            empower your mind.
           </p>
         </div>
 
@@ -95,7 +77,9 @@ export default function BlogPage() {
                     <span>{post.date}</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <h2 className="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors">{post.title}</h2>
+                  <h2 className="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors">
+                    {post.title}
+                  </h2>
                   <p className="text-gray-600 mb-4 flex-grow">{post.excerpt}</p>
                   <div className="text-indigo-600 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
                     Read More
@@ -106,7 +90,12 @@ export default function BlogPage() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -116,5 +105,5 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
