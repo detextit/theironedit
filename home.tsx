@@ -184,7 +184,7 @@ export default function Home() {
             >
               <div className="relative aspect-square max-w-[500px] rounded-xl overflow-hidden border-2 border-indigo-400 shadow-2xl bg-white/70 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:shadow-indigo-400/50">
                 <Image
-                  src="/ironEdit2.png"
+                  src="/ironEdit.png"
                   alt="Iron Edit"
                   width={600}
                   height={600}
