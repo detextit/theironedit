@@ -27,6 +27,12 @@ export const trainerImages = {
     blurDataURL:
       "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACwAwCdASoUAAoAPu1iqU2ppaOiMAgBMB2JQAAK8q4npvdfugyzOAD2V/+hJrvLQ3QPJLFJMZtJZOOwbcCOGUkofs7SslpiIkDDGzhk3ECaCSN5fKgGKfcFGwvl7kR68sn7T/p5krXAuwezBJV6m0JGrqBIF9ty6gAAAA==",
   },
+  enrollTransformation: {
+    src: "/ajay-before-after.webp",
+    alt: "Ajay Pal Singh's before and after transformation",
+    blurDataURL:
+      "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAABwBQCdASoUABQAPu1wsFKppiSiqAgBMB2JZgCdMsp8I0hghl4FXmOKwAeaakoW9Q4jkE8AAPQGlJvDbijc09PuYU0RvlqzooYrqlk0byKcFC72aKxHsObyivYYCueBVyh6uBiIh8rELkCUH62lXTVfJWWnHM3Kem5ewyDkySYSJFg889RWZq9hvrsy5iHl9seVYIfnqqis1ZoeLidbxMGr25F/vuqz5U/sfmHdn5ZmHpZiuQQrJm71JghJzpvFP2IrfQszGOyVQ2vgjY8UYDUcTAA=",
+  },
   founder: {
     src: "/mama-about.webp",
     alt: "Ajay Pal Singh, founder and coach of The Iron Edit",

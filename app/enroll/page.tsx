@@ -23,13 +23,13 @@ export default function EnrollPage() {
             </p>
 
             <div className="mt-8">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-[#2b292d] shadow-lg shadow-black/40">
+              <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-[#2b292d] shadow-lg shadow-black/40">
                 <Image
-                  src={trainerImages.transformationAfter.src}
-                  alt={trainerImages.transformationAfter.alt}
+                  src={trainerImages.enrollTransformation.src}
+                  alt={trainerImages.enrollTransformation.alt}
                   fill
                   placeholder="blur"
-                  blurDataURL={trainerImages.transformationAfter.blurDataURL}
+                  blurDataURL={trainerImages.enrollTransformation.blurDataURL}
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-contain p-2"
                 />
