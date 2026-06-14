@@ -96,12 +96,6 @@ export default function SpeakingPage() {
                 >
                   {speakingContent.hero.primaryCta.label}
                 </Link>
-                <Link
-                  href={speakingContent.hero.secondaryCta.href}
-                  className="inline-flex rounded-full border border-white/25 px-7 py-4 font-semibold text-[#eeeef0] transition hover:bg-[#eeeef0] hover:text-[#1a191b]"
-                >
-                  {speakingContent.hero.secondaryCta.label}
-                </Link>
               </div>
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 bg-[#232225] shadow-2xl shadow-black/40">
@@ -119,32 +113,18 @@ export default function SpeakingPage() {
           </div>
         </section>
 
-        {/* Bio */}
-        <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#b5b2bc]">
-            {speakingContent.bio.eyebrow}
-          </p>
-          <div className="mt-6 space-y-5 text-lg leading-8 text-[#c9c7cf]">
-            {speakingContent.bio.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </section>
-
         {/* Topics */}
         <section className="bg-[#121113] py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#b5b2bc]">
-                  Talks and themes
-                </p>
-                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#eeeef0] sm:text-5xl">
-                  Stories that land. Ideas that stick.
-                </h2>
-              </div>
-              <p className="max-w-md text-[#b5b2bc]">
-                Each talk is shaped around your audience — leadership team,
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#b5b2bc]">
+                Talks and themes
+              </p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-[#eeeef0] sm:text-5xl">
+                Stories that land. Ideas that stick.
+              </h2>
+              <p className="mt-5 max-w-2xl text-[#b5b2bc]">
+                Each talk is shaped around your audience: leadership team,
                 whole company, founders, or community.
               </p>
             </div>

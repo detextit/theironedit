@@ -191,14 +191,6 @@ export const speakingContent = {
     subtitle:
       "Ajay Pal Singh speaks to teams about resilience, discipline, and rebuilding the body and mind at any age. Honest stories from decades in industry, his own turnaround in midlife, and years of coaching hundreds of people through real, sustainable change.",
     primaryCta: { label: "Request a speaking date", href: "#inquire" },
-    secondaryCta: { label: "See coaching programs", href: "/" },
-  },
-  bio: {
-    eyebrow: "About the speaker",
-    paragraphs: [
-      "I spent decades building a career in the steel industry while my own health quietly fell apart. One day a friend told me to stop talking and start changing. I rebuilt my body, my habits, and my mind — and have spent years since helping hundreds of others do the same.",
-      "I speak from lived experience, not slogans. Audiences leave with simple, durable ideas about discipline, sustainable change, and how to keep showing up when life pushes back.",
-    ],
   },
   topics: [
     {
