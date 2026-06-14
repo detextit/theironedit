@@ -100,11 +100,11 @@ export default function SpeakingPage() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 bg-[#232225] shadow-2xl shadow-black/40">
               <Image
-                src={trainerImages.hero.src}
-                alt="Ajay Pal Singh, speaker and coach"
+                src={trainerImages.speaker.src}
+                alt={trainerImages.speaker.alt}
                 fill
                 placeholder="blur"
-                blurDataURL={trainerImages.hero.blurDataURL}
+                blurDataURL={trainerImages.speaker.blurDataURL}
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
                 priority

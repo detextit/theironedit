@@ -12,6 +12,12 @@ export const trainerImages = {
     blurDataURL:
       "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAABwAQCdASoQAAsAA4BaJZ12AAGIAAD+87qCqpFQzyJqV7Uoy77fakhGmE7KiJvywAAAAA==",
   },
+  speaker: {
+    src: "/ajay-speaker.webp",
+    alt: "Ajay Pal Singh speaking on stage",
+    blurDataURL:
+      "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADQAwCdASoQABcAPwFqrE8rJiQiMAgBYCAJYwC06CEnCNHLZg8qf+AA/o3VXj+smVYGsAAYrgP86vJLAfKO4IuCsxuTcKi9IJ8FjtyEbGeGlcUcVoQbe5W1ztxIyXD1fWY9KM5qAIndcp0VD38PxwSBErhLUgM2YGO5TVSUBjG18wGFF9ijlbqQAAA=",
+  },
   mark: {
     src: "/ironEdit.webp",
     alt: "The Iron Edit visual mark",
