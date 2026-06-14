@@ -21,21 +21,37 @@ export default function Home() {
 
       <main>
         <section className="relative overflow-hidden bg-[#121113]">
-          <Image
-            src={trainerImages.hero.src}
-            alt={trainerImages.hero.alt}
-            fill
-            priority
-            placeholder="blur"
-            blurDataURL={trainerImages.hero.blurDataURL}
-            sizes="100vw"
-            className="object-cover object-[70%_top]"
-          />
-          <div className="absolute inset-0 bg-[#121113]/55 lg:hidden" />
-          <div className="absolute inset-0 hidden bg-gradient-to-r from-[#121113]/92 via-[#121113]/55 to-transparent lg:block" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121113]/80 via-transparent to-transparent" />
+          {/* Desktop / large screens: full-bleed background photo with text overlay */}
+          <div className="absolute inset-0 hidden lg:block">
+            <Image
+              src={trainerImages.hero.src}
+              alt={trainerImages.hero.alt}
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL={trainerImages.hero.blurDataURL}
+              sizes="100vw"
+              className="object-cover object-[70%_top]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#121113]/92 via-[#121113]/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#121113]/80 via-transparent to-transparent" />
+          </div>
 
-          <div className="relative mx-auto flex min-h-[620px] max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:min-h-[760px] lg:px-8">
+          <div className="relative mx-auto flex max-w-7xl flex-col px-4 py-10 sm:px-6 lg:min-h-[760px] lg:justify-center lg:px-8 lg:py-16">
+            {/* Mobile / tablet: photo stacks above the copy as a clean card */}
+            <div className="relative mb-8 aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-[#232225] shadow-2xl shadow-black/40 sm:aspect-[16/10] lg:hidden">
+              <Image
+                src={trainerImages.hero.src}
+                alt={trainerImages.hero.alt}
+                fill
+                priority
+                placeholder="blur"
+                blurDataURL={trainerImages.hero.blurDataURL}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-[70%_top]"
+              />
+            </div>
+
             <div className="lg:max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.55em] text-[#b5b2bc]">
                 Fitness coaching, edited for real life
