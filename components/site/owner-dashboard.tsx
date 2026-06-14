@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { coachingPrograms } from "@/lib/content/programs";
 import OwnerIssueDesk from "@/components/site/owner-issue-desk";
+import OwnerBlogComposer from "@/components/site/owner-blog-composer";
 
 type Lifecycle = "active" | "expiring" | "expired" | "cancelled" | "pending";
 
@@ -180,9 +181,9 @@ export default function OwnerDashboard() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [tab, setTab] = useState<"members" | "enrollments" | "newsletter">(
-    "members",
-  );
+  const [tab, setTab] = useState<
+    "members" | "enrollments" | "newsletter" | "blog"
+  >("members");
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
   const [enrollLoading, setEnrollLoading] = useState(false);
 
@@ -550,18 +551,20 @@ export default function OwnerDashboard() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button
-            onClick={
-              tab === "members"
-                ? loadMembers
-                : tab === "enrollments"
-                  ? loadEnrollments
-                  : loadNewsletter
-            }
-            className="rounded-xl border border-white/10 px-4 py-2 text-sm font-medium text-[#c9c7cf] transition hover:bg-white/5"
-          >
-            Refresh
-          </button>
+          {tab !== "blog" && (
+            <button
+              onClick={
+                tab === "members"
+                  ? loadMembers
+                  : tab === "enrollments"
+                    ? loadEnrollments
+                    : loadNewsletter
+              }
+              className="rounded-xl border border-white/10 px-4 py-2 text-sm font-medium text-[#c9c7cf] transition hover:bg-white/5"
+            >
+              Refresh
+            </button>
+          )}
           <button
             onClick={() => setShowIssueDesk(true)}
             className="rounded-xl border border-white/10 px-4 py-2 text-sm font-medium text-[#c9c7cf] transition hover:bg-white/5"
@@ -620,6 +623,16 @@ export default function OwnerDashboard() {
           }`}
         >
           Newsletter
+        </button>
+        <button
+          onClick={() => setTab("blog")}
+          className={`rounded-lg px-4 py-2 font-medium transition ${
+            tab === "blog"
+              ? "bg-[#eeeef0] text-[#1a191b]"
+              : "text-[#c9c7cf] hover:bg-white/5"
+          }`}
+        >
+          Blog
         </button>
       </div>
 
@@ -1234,6 +1247,12 @@ export default function OwnerDashboard() {
               </button>
             </div>
           </form>
+        </div>
+      )}
+
+      {tab === "blog" && (
+        <div className="mt-8">
+          <OwnerBlogComposer secret={secret} />
         </div>
       )}
 

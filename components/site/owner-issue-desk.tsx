@@ -210,7 +210,6 @@ export default function OwnerIssueDesk({
                     <select name="requestType" className={inputClass}>
                       <option value="website-issue">Website issue</option>
                       <option value="content-update">Content update</option>
-                      <option value="blog-post">Blog post request</option>
                       <option value="enrollment-pricing">
                         Enrollment/pricing
                       </option>
@@ -258,26 +257,6 @@ export default function OwnerIssueDesk({
                     placeholder="Describe the change, expected behavior, draft blog content, or context."
                   />
                 </label>
-
-                <div className="space-y-4">
-                  <label className="block space-y-2">
-                    <span className="text-sm font-medium text-[#c9c7cf]">
-                      Blog title, if relevant
-                    </span>
-                    <input name="blogTitle" className={inputClass} />
-                  </label>
-                  <label className="block space-y-2">
-                    <span className="text-sm font-medium text-[#c9c7cf]">
-                      Blog excerpt, if relevant
-                    </span>
-                    <textarea
-                      name="blogExcerpt"
-                      rows={5}
-                      className={inputClass}
-                      placeholder="A short summary or the draft excerpt for the blog post."
-                    />
-                  </label>
-                </div>
 
                 <label className="block space-y-2">
                   <span className="text-sm font-medium text-[#c9c7cf]">

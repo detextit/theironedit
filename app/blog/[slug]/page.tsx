@@ -4,7 +4,11 @@ import { Fragment, type ReactNode } from "react";
 import { notFound } from "next/navigation";
 import NewsletterForm from "@/components/site/newsletter-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
-import { blogPosts, getBlogPost } from "@/lib/content/blog";
+import { getPublishedPost } from "@/lib/server/blog-posts";
+
+// DB-backed posts must render on demand. Static posts are still fast
+// enough at this site's traffic volume to render dynamically too.
+export const dynamic = "force-dynamic";
 
 function renderInline(text: string): ReactNode {
   return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
@@ -19,17 +23,13 @@ function renderInline(text: string): ReactNode {
   });
 }
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
-
 export default async function BlogPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getPublishedPost(slug);
 
   if (!post) {
     notFound();
@@ -103,7 +103,7 @@ export default async function BlogPostPage({
                   return (
                     <div
                       key={`callout-${index}`}
-                      className="rounded-[2rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-6 text-[#eeeef0] shadow-sm"
+                      className="whitespace-pre-line rounded-[2rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-6 text-[#eeeef0] shadow-sm"
                     >
                       {renderInline(block.text)}
                     </div>
@@ -120,7 +120,10 @@ export default async function BlogPostPage({
                       } marker:text-[#b5b2bc]`}
                     >
                       {block.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="pl-1">
+                        <li
+                          key={itemIndex}
+                          className="whitespace-pre-line pl-1"
+                        >
                           {renderInline(item)}
                         </li>
                       ))}
@@ -129,7 +132,12 @@ export default async function BlogPostPage({
                 }
 
                 return (
-                  <p key={`paragraph-${index}`}>{renderInline(block.text)}</p>
+                  <p
+                    key={`paragraph-${index}`}
+                    className="whitespace-pre-line"
+                  >
+                    {renderInline(block.text)}
+                  </p>
                 );
               })}
             </div>
