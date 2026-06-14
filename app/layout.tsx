@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "The Iron Edit",
-  description: "The Iron Edit",
+  description:
+    "Chic, practical fitness and nutrition coaching by Ajay Pal Singh.",
 };
 
 export default function RootLayout({

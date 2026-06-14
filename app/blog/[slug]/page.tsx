@@ -1,129 +1,158 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
-import StrengthTrainingArticle from "@/components/blog/StrengthTrainingArticle";
-import NutritionArticle from "@/components/blog/NutritionArticle";
-import MindsetArticle from "@/components/blog/MindsetArticle";
-import BrainTrainingArticle from "@/components/blog/BrainTrainingArticle";
+import Link from "next/link";
+import { Fragment, type ReactNode } from "react";
+import { notFound } from "next/navigation";
+import NewsletterForm from "@/components/site/newsletter-form";
+import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
+import { blogPosts, getBlogPost } from "@/lib/content/blog";
 
-// This would typically come from a CMS or database
-const blogPosts = {
-  "strength-training-basics": {
-    title: "The Fundamentals of Strength Training",
-    date: "April 15, 2025",
-    category: "Training",
-    readTime: "6 min read",
-    imageUrl: "/strength.png",
-  },
-  "nutrition-for-muscle-growth": {
-    title: "Nutrition Strategies for Optimal Muscle Growth",
-    date: "March 22, 2025",
-    category: "Nutrition",
-    readTime: "8 min read",
-    imageUrl: "/smoothie.png",
-  },
-  "mindset-transformation": {
-    title: "The Mental Side of Physical Transformation",
-    date: "February 10, 2025",
-    category: "Mindset",
-    readTime: "5 min read",
-    imageUrl: "/mindset.png",
-  },
-  "brain-training-fitness": {
-    title: "Your Brain Wants a Plan, Not a Pep Talk",
-    date: "March 30, 2025",
-    category: "Mindset",
-    readTime: "7 min read",
-    imageUrl: "/brain.png",
-  },
-};
+function renderInline(text: string): ReactNode {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={index} className="font-semibold text-[#eeeef0]">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return <Fragment key={index}>{part}</Fragment>;
+  });
+}
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts];
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
 
   if (!post) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-100 via-powder-blue to-gray-200 text-gray-800 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="mb-8">
-            The blog post you're looking for doesn't exist.
-          </p>
-          <Link
-            href="/blog"
-            className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-colors"
-          >
-            Back to Blog
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // Render the strength training article component for that specific slug
-  if (params.slug === "strength-training-basics") {
-    return <StrengthTrainingArticle post={post} />;
-  }
-
-  // Render the nutrition article component for that specific slug
-  if (params.slug === "nutrition-for-muscle-growth") {
-    return <NutritionArticle post={post} />;
-  }
-
-  // Render the mindset article component for that specific slug
-  if (params.slug === "mindset-transformation") {
-    return <MindsetArticle post={post} />;
-  }
-
-  // Render the brain training article component for that specific slug
-  if (params.slug === "brain-training-fitness") {
-    return <BrainTrainingArticle post={post} />;
+    notFound();
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 via-powder-blue to-gray-200 text-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        <Link
-          href="/blog"
-          className="inline-flex items-center text-indigo-600 hover:text-indigo-700 transition-colors mb-6"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Blog
-        </Link>
-
-        <article className="max-w-4xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
-          <div className="relative h-[400px] w-full">
-            <Image
-              src={post.imageUrl || "/placeholder.svg"}
-              alt={post.title}
-              fill
-              className="object-contain"
-              unoptimized
-            />
-          </div>
-
-          <div className="p-8 md:p-12">
-            <div className="flex flex-wrap gap-4 items-center mb-6">
-              <span className="bg-indigo-100 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full inline-flex items-center">
-                <Tag className="w-4 h-4 mr-1" />
-                {post.category}
-              </span>
-              <span className="text-gray-500 text-sm inline-flex items-center">
-                <Calendar className="w-4 h-4 mr-1" />
-                {post.date}
-              </span>
-              <span className="text-gray-500 text-sm inline-flex items-center">
-                <Clock className="w-4 h-4 mr-1" />
-                {post.readTime}
-              </span>
+    <div className="min-h-screen bg-[#1a191b] text-[#eeeef0]">
+      <SiteHeader />
+      <main>
+        <article>
+          <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+            <Link
+              href="/blog"
+              className="inline-flex rounded-full border border-white/10 bg-[#232225] px-4 py-2 text-sm font-medium text-[#c9c7cf] transition hover:border-white/25"
+            >
+              ← Back to blog
+            </Link>
+            <div className="mt-8 overflow-hidden rounded-[2.5rem] bg-[#232225] shadow-xl shadow-black/40">
+              <div className="relative aspect-[16/9] overflow-hidden bg-[#2b292d]">
+                <Image
+                  src={post.imageUrl}
+                  alt={post.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 960px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 sm:p-10 lg:p-12">
+                <div className="flex flex-wrap gap-2 text-sm font-medium text-[#9b99a3]">
+                  <span>{post.category}</span>
+                  <span>·</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#eeeef0] sm:text-5xl">
+                  {post.title}
+                </h1>
+                <p className="mt-5 text-xl leading-8 text-[#b5b2bc]">
+                  {post.excerpt}
+                </p>
+              </div>
             </div>
+          </section>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-6">
-              {post.title}
-            </h1>
-          </div>
+          <section className="mx-auto max-w-3xl px-4 pb-16 sm:px-6 lg:px-8">
+            <div className="space-y-7 text-lg leading-8 text-[#c9c7cf]">
+              {post.body.map((block, index) => {
+                if (block.type === "heading") {
+                  return (
+                    <h2
+                      key={`${block.text}-${index}`}
+                      className="pt-4 text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#eeeef0]"
+                    >
+                      {block.text}
+                    </h2>
+                  );
+                }
+
+                if (block.type === "subheading") {
+                  return (
+                    <h3
+                      key={`${block.text}-${index}`}
+                      className="pt-2 text-xl font-semibold leading-snug text-[#b5b2bc]"
+                    >
+                      {block.text}
+                    </h3>
+                  );
+                }
+
+                if (block.type === "callout") {
+                  return (
+                    <div
+                      key={`callout-${index}`}
+                      className="rounded-[2rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-6 text-[#eeeef0] shadow-sm"
+                    >
+                      {renderInline(block.text)}
+                    </div>
+                  );
+                }
+
+                if (block.type === "list") {
+                  const ListTag = block.ordered ? "ol" : "ul";
+                  return (
+                    <ListTag
+                      key={`list-${index}`}
+                      className={`space-y-2 pl-6 ${
+                        block.ordered ? "list-decimal" : "list-disc"
+                      } marker:text-[#b5b2bc]`}
+                    >
+                      {block.items.map((item, itemIndex) => (
+                        <li key={itemIndex} className="pl-1">
+                          {renderInline(item)}
+                        </li>
+                      ))}
+                    </ListTag>
+                  );
+                }
+
+                return (
+                  <p key={`paragraph-${index}`}>{renderInline(block.text)}</p>
+                );
+              })}
+            </div>
+          </section>
         </article>
-      </div>
+
+        <section className="bg-[#2b292d] py-14">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-[2rem] bg-[#232225] p-6 shadow-sm sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[#b5b2bc]">
+                Keep reading
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold text-[#eeeef0]">
+                Join the weekly coaching note.
+              </h2>
+              <div className="mt-5">
+                <NewsletterForm source={`blog:${post.slug}`} />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
     </div>
   );
 }

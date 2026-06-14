@@ -1,119 +1,89 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
-
-const blogPosts = [
-  {
-    id: "strength-training-basics",
-    title: "The Fundamentals of Strength Training",
-    excerpt:
-      "Discover the core principles of effective strength training and how to build a solid foundation for your fitness journey.",
-    date: "April 15, 2025",
-    category: "Training",
-    imageUrl: "/strength.png",
-    readTime: "6 min read",
-  },
-  {
-    id: "nutrition-for-muscle-growth",
-    title: "Nutrition Strategies for Optimal Muscle Growth",
-    excerpt:
-      "Learn the science-backed nutrition principles that maximize muscle growth and recovery for better training results.",
-    date: "March 22, 2025",
-    category: "Nutrition",
-    imageUrl: "/smoothie.png",
-    readTime: "8 min read",
-  },
-  {
-    id: "mindset-transformation",
-    title: "The Mental Side of Physical Transformation",
-    excerpt:
-      "Explore how developing the right mindset is often the missing piece in achieving lasting physical transformation.",
-    date: "February 10, 2025",
-    category: "Mindset",
-    imageUrl: "/mindset.png",
-    readTime: "5 min read",
-  },
-  {
-    id: "brain-training-fitness",
-    title: "Your Brain Wants a Plan, Not a Pep Talk",
-    excerpt:
-      "Explore how understanding your brain can transform vague fitness goals into achievable results backed by science.",
-    date: "March 30, 2025",
-    category: "Mindset",
-    imageUrl: "/brain.png",
-    readTime: "7 min read",
-  },
-];
+import Link from "next/link";
+import NewsletterForm from "@/components/site/newsletter-form";
+import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
+import { blogPosts } from "@/lib/content/blog";
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 via-powder-blue to-gray-200 text-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        <div className="mb-12">
-          <Link
-            href="/"
-            className="inline-flex items-center text-indigo-600 hover:text-indigo-700 transition-colors mb-6"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700">
-            The Iron Edit Blog
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
-            Insights, tips, and strategies to help you transform your body and
-            empower your mind.
+    <div className="min-h-screen bg-[#1a191b] text-[#eeeef0]">
+      <SiteHeader />
+      <main>
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#b5b2bc]">
+            Articles
           </p>
-        </div>
+          <div className="mt-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h1 className="text-5xl font-semibold tracking-[-0.05em] text-[#eeeef0] sm:text-6xl">
+                The Iron Edit Blog
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#b5b2bc]">
+                Fitness, food, mindset, and practical structure for people who
+                want progress without noise.
+              </p>
+            </div>
+            <Link
+              href="/enroll"
+              className="rounded-full bg-[#eeeef0] px-6 py-4 text-center font-semibold text-[#1a191b] transition hover:bg-[#d7d5dd]"
+            >
+              Enroll with Ajay
+            </Link>
+          </div>
+        </section>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <Link key={post.id} href={`/blog/${post.id}`} className="group">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                <div className="relative h-48 w-full overflow-hidden">
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group overflow-hidden rounded-[2rem] bg-[#232225] shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
-                    src={post.imageUrl || "/placeholder.svg"}
+                    src={post.imageUrl}
                     alt={post.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    {post.category}
-                  </div>
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
-                    <span>{post.date}</span>
+                <div className="p-6">
+                  <div className="flex flex-wrap gap-2 text-xs font-medium text-[#9b99a3]">
+                    <span>{post.category}</span>
+                    <span>·</span>
                     <span>{post.readTime}</span>
                   </div>
-                  <h2 className="text-xl font-bold mb-3 group-hover:text-indigo-600 transition-colors">
+                  <h2 className="mt-4 text-2xl font-semibold leading-tight text-[#eeeef0]">
                     {post.title}
                   </h2>
-                  <p className="text-gray-600 mb-4 flex-grow">{post.excerpt}</p>
-                  <div className="text-indigo-600 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
-                    Read More
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 ml-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[#b5b2bc]">
+                    {post.excerpt}
+                  </p>
                 </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-[#2b292d] py-14">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-[2rem] bg-[#232225] p-6 shadow-sm sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[#b5b2bc]">
+                Weekly notes
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold text-[#eeeef0]">
+                Get the next article in your inbox.
+              </h2>
+              <div className="mt-5">
+                <NewsletterForm source="blog" />
               </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
     </div>
   );
 }

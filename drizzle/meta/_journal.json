@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1781391137231,
+      "tag": "0000_members",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1781457076693,
+      "tag": "0001_enrollments",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781459540575,
+      "tag": "0002_newsletter",
+      "breakpoints": true
+    }
+  ]
+}
