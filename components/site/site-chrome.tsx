@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { contactInfo, siteLinks } from "@/lib/content/site";
+import CallButton from "@/components/site/call-button";
 
 export function SiteHeader() {
   return (
@@ -58,9 +59,7 @@ export function SiteFooter() {
             >
               Book a free 30-min call →
             </a>
-            <a href={contactInfo.phoneHref} className="hover:text-white">
-              {contactInfo.phone}
-            </a>
+            <CallButton className="text-left hover:text-white" />
           </div>
         </div>
         <div className="flex flex-col gap-3 text-sm md:items-end">

@@ -76,8 +76,11 @@ export const specialties = {
 };
 
 export const contactInfo = {
-  phone: "+91 6289173606",
-  phoneHref: "tel:+916289173606",
+  // Phone is stored base64-encoded and only decoded client-side on user
+  // interaction, so the raw number and tel: link never appear in the served
+  // HTML (deters scrapers/spam bots).
+  phoneEncoded: "KzkxNjI4OTE3MzYwNg==",
+  phoneDisplayEncoded: "KzkxIDYyODkxNzM2MDY=",
   calendlyUrl: "https://calendly.com/theironedit/30min",
 };
 

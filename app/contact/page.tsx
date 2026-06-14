@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
+import CallButton from "@/components/site/call-button";
 import { contactInfo } from "@/lib/content/site";
 
 type SubmitStatus = {
@@ -97,12 +98,7 @@ export default function Contact() {
             </div>
             <p className="text-sm text-[#b5b2bc]">
               Call or WhatsApp:{" "}
-              <a
-                href={contactInfo.phoneHref}
-                className="font-semibold text-[#eeeef0] underline-offset-2 hover:underline"
-              >
-                {contactInfo.phone}
-              </a>
+              <CallButton className="font-semibold text-[#eeeef0] underline-offset-2 hover:underline" />
             </p>
           </div>
         </div>
