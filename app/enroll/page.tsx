@@ -1,6 +1,7 @@
 import Image from "next/image";
 import EnrollmentForm from "@/components/site/enrollment-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
+import CallButton from "@/components/site/call-button";
 import { contactInfo, trainerImages } from "@/lib/content/site";
 
 export default function EnrollPage() {
@@ -23,13 +24,13 @@ export default function EnrollPage() {
             </p>
 
             <div className="mt-8">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-[#2b292d] shadow-lg shadow-black/40">
+              <div className="relative aspect-square overflow-hidden rounded-[2rem] bg-[#2b292d] shadow-lg shadow-black/40">
                 <Image
-                  src={trainerImages.transformationAfter.src}
-                  alt={trainerImages.transformationAfter.alt}
+                  src={trainerImages.enrollTransformation.src}
+                  alt={trainerImages.enrollTransformation.alt}
                   fill
                   placeholder="blur"
-                  blurDataURL={trainerImages.transformationAfter.blurDataURL}
+                  blurDataURL={trainerImages.enrollTransformation.blurDataURL}
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-contain p-2"
                 />
@@ -53,7 +54,8 @@ export default function EnrollPage() {
                 Book a free 30-min call →
               </a>
               <p className="mt-3 text-xs text-[#9b99a3]">
-                Or reach us directly at {contactInfo.phone}.
+                Or reach us directly:{" "}
+                <CallButton className="font-semibold text-[#b5b2bc] underline-offset-2 hover:underline hover:text-[#eeeef0]" />
               </p>
             </div>
           </div>
