@@ -9,6 +9,18 @@ export const contactSchema = z.object({
   message: requiredText.max(4000),
 });
 
+export const speakingInquirySchema = z.object({
+  organization: requiredText.max(160),
+  contactName: requiredText.max(120),
+  email: z.string().trim().email("Enter a valid email address").max(200),
+  phone: z.string().trim().max(40).optional().default(""),
+  eventType: z.string().trim().max(120).optional().default(""),
+  eventDate: z.string().trim().max(80).optional().default(""),
+  audienceSize: z.string().trim().max(80).optional().default(""),
+  location: z.string().trim().max(160).optional().default(""),
+  message: requiredText.max(4000),
+});
+
 export const newsletterSchema = z.object({
   name: z.string().trim().max(120).optional().default(""),
   email: z.string().trim().email("Enter a valid email address").max(200),
@@ -120,3 +132,4 @@ export type EnrollmentInput = z.infer<typeof enrollmentSchema>;
 export type OwnerIssueInput = z.infer<typeof ownerIssueSchema>;
 export type BlogPostCreateInput = z.infer<typeof blogPostCreateSchema>;
 export type BlogBlockInput = z.infer<typeof blogBlockSchema>;
+export type SpeakingInquiryInput = z.infer<typeof speakingInquirySchema>;

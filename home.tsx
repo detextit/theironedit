@@ -323,6 +323,40 @@ export default function Home() {
         <BlogPreview />
 
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#232225] p-8 shadow-xl shadow-black/40 sm:p-12">
+            <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[#b5b2bc]">
+                  Speaking & workshops
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#eeeef0] sm:text-4xl">
+                  Bring Ajay to speak to your team.
+                </h2>
+                <p className="mt-4 max-w-2xl text-[#b5b2bc] leading-7">
+                  Keynotes, half-day workshops, and fireside chats on
+                  resilience, discipline, and workplace wellness — for offices,
+                  founders, schools, and community groups.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <Link
+                  href="/speaking"
+                  className="inline-flex rounded-full bg-[#eeeef0] px-6 py-3 font-semibold text-[#1a191b] transition hover:bg-[#d7d5dd]"
+                >
+                  See speaking topics
+                </Link>
+                <Link
+                  href="/speaking#inquire"
+                  className="inline-flex rounded-full border border-white/25 px-6 py-3 font-semibold text-[#eeeef0] transition hover:bg-[#eeeef0] hover:text-[#1a191b]"
+                >
+                  Request a date
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid overflow-hidden rounded-[2.5rem] bg-[#232225] shadow-xl shadow-black/40 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="relative min-h-[320px]">
               <Image

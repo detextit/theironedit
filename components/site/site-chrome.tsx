@@ -69,6 +69,9 @@ export function SiteFooter() {
           <Link href="/blog" className="hover:text-white">
             Blog
           </Link>
+          <Link href="/speaking" className="hover:text-white">
+            Speaking
+          </Link>
           <Link href="/contact" className="hover:text-white">
             Contact
           </Link>
