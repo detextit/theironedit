@@ -194,7 +194,7 @@ export default function Home() {
             </div>
 
             <figure>
-              <div className="relative aspect-[16/9] overflow-hidden rounded-[1.75rem]">
+              <div className="relative aspect-[1758/894] overflow-hidden rounded-[1.75rem]">
                 <Image
                   src={trainerImages.transformationAfter.src}
                   alt={trainerImages.transformationAfter.alt}

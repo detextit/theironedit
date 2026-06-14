@@ -22,10 +22,10 @@ export const trainerImages = {
       "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQAgCdASoQABAAA4BaJbACdAYwIr0Ch9eAAPZ2h6hOWaQVaBfzVTbMfkQ5DrTf6WXJxC0iukwgC9/z68H642A6aLQnHwidtvFQmQIV3yWKgBxL82vtXCCp/IMTJtwyixrSOZo+gIiEVNsgUcOu/NCA3KAAAA==",
   },
   transformationAfter: {
-    src: "/mama.webp",
+    src: "/transformation.webp",
     alt: "Ajay Pal Singh's transformation from 2015 to 2021 after rebuilding his health and fitness",
     blurDataURL:
-      "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAgAA4BaJYwCdADpG8/vAAD+fidodyUdMiVE2TdC1Kty72YS26WyZ16bjqU6FAYsRLzlAv9an1OQjqb8iApUx1EBQ7tlDRvJwAAA",
+      "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAACwAwCdASoUAAoAPu1iqU2ppaOiMAgBMB2JQAAK8q4npvdfugyzOAD2V/+hJrvLQ3QPJLFJMZtJZOOwbcCOGUkofs7SslpiIkDDGzhk3ECaCSN5fKgGKfcFGwvl7kR68sn7T/p5krXAuwezBJV6m0JGrqBIF9ty6gAAAA==",
   },
   founder: {
     src: "/mama-about.webp",
