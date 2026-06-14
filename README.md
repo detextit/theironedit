@@ -53,4 +53,4 @@ Required to enable Razorpay checkout:
 
 ## Image performance
 
-The app now uses Next.js image optimization for local images and avoids the previous global `images.unoptimized` setting. Above-the-fold imagery uses `priority`; lower sections use responsive `sizes` so phone and desktop layouts load appropriate variants.
+The app now uses Next.js image optimization for local images and avoids the global `images.unoptimized` setting. Above-the-fold imagery uses `priority`; lower sections use responsive `sizes` so phone and desktop layouts load appropriate variants. 
