@@ -101,7 +101,7 @@ export default function SpeakingPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 bg-[#232225] shadow-2xl shadow-black/40">
               <Image
                 src={trainerImages.hero.src}
-                alt="Ajay Pal Singh — speaker and coach"
+                alt="Ajay Pal Singh, speaker and coach"
                 fill
                 placeholder="blur"
                 blurDataURL={trainerImages.hero.blurDataURL}
@@ -231,7 +231,7 @@ export default function SpeakingPage() {
               </h2>
               <p className="mt-5 text-lg leading-8 text-[#b5b2bc]">
                 Share a few details and Ajay will reply by email within a few
-                working days — usually with availability, a fee range, and a
+                working days, usually with availability, a fee range, and a
                 couple of talk options shaped for your team.
               </p>
               <p className="mt-6 text-sm text-[#9b99a3]">

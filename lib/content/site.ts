@@ -196,7 +196,7 @@ export const speakingContent = {
     {
       title: "Resilience and the comeback",
       description:
-        "From hospital beds and burnout to marathons in my fifties — what it actually takes to start again when you have nothing left.",
+        "From hospital beds and burnout to marathons in my fifties. What it actually takes to start again when you have nothing left.",
     },
     {
       title: "Discipline that survives real life",
@@ -206,7 +206,7 @@ export const speakingContent = {
     {
       title: "Workplace wellness, without the gimmicks",
       description:
-        "Practical nutrition, movement, and recovery for desk-bound teams. No fad diets, no shame — just what works for busy people.",
+        "Practical nutrition, movement, and recovery for desk-bound teams. No fad diets, no shame, just what works for busy people.",
     },
     {
       title: "Mindset for performance",
@@ -231,7 +231,7 @@ export const speakingContent = {
       title: "Fireside chat",
       detail: "45 – 75 min",
       description:
-        "Moderated conversation format — ideal for wellness weeks, founder series, and culture events.",
+        "Moderated conversation format, ideal for wellness weeks, founder series, and culture events.",
     },
   ],
   audiences: [
