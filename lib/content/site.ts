@@ -1,8 +1,9 @@
 export const siteLinks = [
   { href: "/gallery", label: "Gallery" },
   { href: "/blog", label: "Blog" },
-  { href: "/speaking", label: "Speaking" },
   { href: "/contact", label: "Contact" },
+  { href: "/speaking", label: "Speaking" },
+  { href: "/enroll", label: "Enroll" },
 ];
 
 export const trainerImages = {

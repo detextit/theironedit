@@ -71,7 +71,7 @@ export default function GalleryPage() {
                 href="/enroll"
                 className="rounded-full bg-[#eeeef0] px-7 py-4 text-center font-semibold text-[#1a191b] shadow-lg shadow-black/30 transition hover:bg-[#d7d5dd]"
               >
-                Start enrollment
+                Enroll
               </Link>
               <a
                 href={contactInfo.calendlyUrl}
