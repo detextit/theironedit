@@ -32,7 +32,6 @@ export const ownerIssueSchema = z.object({
   requestType: z.enum([
     "website-issue",
     "content-update",
-    "blog-post",
     "enrollment-pricing",
     "newsletter",
   ]),
@@ -40,8 +39,6 @@ export const ownerIssueSchema = z.object({
   priority: z.enum(["low", "medium", "high", "urgent"]),
   pageUrl: z.string().trim().max(300).optional().default(""),
   details: requiredText.max(6000),
-  blogTitle: z.string().trim().max(180).optional().default(""),
-  blogExcerpt: z.string().trim().max(500).optional().default(""),
 });
 
 const optionalDate = z
@@ -84,6 +81,34 @@ export const newsletterCampaignSchema = z.object({
   body: requiredText.max(20000),
 });
 
+const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+export const blogBlockSchema = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("paragraph"), text: requiredText.max(4000) }),
+  z.object({ type: z.literal("heading"), text: requiredText.max(200) }),
+  z.object({ type: z.literal("subheading"), text: requiredText.max(200) }),
+  z.object({ type: z.literal("callout"), text: requiredText.max(2000) }),
+  z.object({
+    type: z.literal("list"),
+    ordered: z.boolean().optional().default(false),
+    items: z.array(requiredText.max(500)).min(1).max(50),
+  }),
+]);
+
+export const blogPostCreateSchema = z.object({
+  slug: z
+    .string()
+    .trim()
+    .min(1, "Slug is required")
+    .max(120)
+    .regex(slugRegex, "Use lowercase letters, numbers and hyphens only"),
+  title: requiredText.max(200),
+  excerpt: z.string().trim().max(500).optional().default(""),
+  category: z.string().trim().max(80).optional().default(""),
+  readTime: z.string().trim().max(40).optional().default(""),
+  body: z.array(blogBlockSchema).min(1, "Add at least one block").max(200),
+});
+
 export type MemberCreateInput = z.infer<typeof memberCreateSchema>;
 export type MemberUpdateInput = z.infer<typeof memberUpdateSchema>;
 export type EnrollmentConvertInput = z.infer<typeof enrollmentConvertSchema>;
@@ -93,3 +118,5 @@ export type ContactInput = z.infer<typeof contactSchema>;
 export type NewsletterInput = z.infer<typeof newsletterSchema>;
 export type EnrollmentInput = z.infer<typeof enrollmentSchema>;
 export type OwnerIssueInput = z.infer<typeof ownerIssueSchema>;
+export type BlogPostCreateInput = z.infer<typeof blogPostCreateSchema>;
+export type BlogBlockInput = z.infer<typeof blogBlockSchema>;

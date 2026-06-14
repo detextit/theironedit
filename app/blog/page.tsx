@@ -2,9 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import NewsletterForm from "@/components/site/newsletter-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
-import { blogPosts } from "@/lib/content/blog";
+import { getAllPublishedPosts } from "@/lib/server/blog-posts";
 
-export default function BlogPage() {
+// Always render fresh so newly-published owner blog posts show up
+// without waiting for a rebuild.
+export const dynamic = "force-dynamic";
+
+export default async function BlogPage() {
+  const posts = await getAllPublishedPosts();
   return (
     <div className="min-h-screen bg-[#1a191b] text-[#eeeef0]">
       <SiteHeader />
@@ -34,7 +39,7 @@ export default function BlogPage() {
 
         <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}

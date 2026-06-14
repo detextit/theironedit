@@ -1,11 +1,19 @@
 import {
+  customType,
   date,
   integer,
+  jsonb,
   pgTable,
   text,
   timestamp,
   uuid,
 } from "drizzle-orm/pg-core";
+
+const bytea = customType<{ data: Buffer; default: false }>({
+  dataType() {
+    return "bytea";
+  },
+});
 
 export const members = pgTable("members", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -91,3 +99,27 @@ export const newsletterCampaigns = pgTable("newsletter_campaigns", {
 
 export type CampaignRow = typeof newsletterCampaigns.$inferSelect;
 export type NewCampaignRow = typeof newsletterCampaigns.$inferInsert;
+
+export const blogPostsTable = pgTable("blog_posts", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull().unique(),
+  title: text("title").notNull(),
+  excerpt: text("excerpt").notNull().default(""),
+  category: text("category").notNull().default(""),
+  readTime: text("read_time").notNull().default(""),
+  imageBytes: bytea("image_bytes").notNull(),
+  imageMimeType: text("image_mime_type").notNull(),
+  // Array of BlogBlock objects (see lib/content/blog.ts BlogBlock type).
+  body: jsonb("body").notNull().default([]),
+  // published | unpublished — kept as a hook for future drafts; v1 only inserts 'published'.
+  status: text("status").notNull().default("published"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type BlogPostRow = typeof blogPostsTable.$inferSelect;
+export type NewBlogPostRow = typeof blogPostsTable.$inferInsert;

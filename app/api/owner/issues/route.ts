@@ -47,13 +47,6 @@ function issueBody({
     "",
   ];
 
-  if (data.blogTitle || data.blogExcerpt) {
-    lines.push("## Blog fields", "");
-    if (data.blogTitle) lines.push(`**Blog title:** ${data.blogTitle}`);
-    if (data.blogExcerpt) lines.push(`**Blog excerpt:** ${data.blogExcerpt}`);
-    lines.push("");
-  }
-
   lines.push("## Screenshots", "");
   if (screenshots.length > 0) {
     for (const shot of screenshots) {
@@ -115,8 +108,6 @@ export async function POST(request: Request) {
     priority: formData.get("priority"),
     pageUrl: formData.get("pageUrl"),
     details: formData.get("details"),
-    blogTitle: formData.get("blogTitle"),
-    blogExcerpt: formData.get("blogExcerpt"),
   });
 
   if (!parsed.success) {

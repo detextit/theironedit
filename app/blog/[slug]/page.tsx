@@ -4,7 +4,11 @@ import { Fragment, type ReactNode } from "react";
 import { notFound } from "next/navigation";
 import NewsletterForm from "@/components/site/newsletter-form";
 import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
-import { blogPosts, getBlogPost } from "@/lib/content/blog";
+import { getPublishedPost } from "@/lib/server/blog-posts";
+
+// DB-backed posts must render on demand. Static posts are still fast
+// enough at this site's traffic volume to render dynamically too.
+export const dynamic = "force-dynamic";
 
 function renderInline(text: string): ReactNode {
   return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
@@ -19,17 +23,13 @@ function renderInline(text: string): ReactNode {
   });
 }
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
-
 export default async function BlogPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const post = await getPublishedPost(slug);
 
   if (!post) {
     notFound();
