@@ -1,0 +1,21 @@
+CREATE TABLE "members" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"name" text NOT NULL,
+	"email" text NOT NULL,
+	"phone" text DEFAULT '' NOT NULL,
+	"program_id" text DEFAULT '' NOT NULL,
+	"program_name" text DEFAULT '' NOT NULL,
+	"amount_inr" integer DEFAULT 0 NOT NULL,
+	"currency" text DEFAULT 'INR' NOT NULL,
+	"status" text DEFAULT 'active' NOT NULL,
+	"source" text DEFAULT 'manual' NOT NULL,
+	"paid_at" timestamp with time zone,
+	"plan_start" date,
+	"plan_end" date,
+	"razorpay_payment_id" text,
+	"razorpay_order_id" text,
+	"notes" text DEFAULT '' NOT NULL,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "members_razorpay_payment_id_unique" UNIQUE("razorpay_payment_id")
+);

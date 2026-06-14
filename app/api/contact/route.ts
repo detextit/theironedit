@@ -1,61 +1,57 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import {
+  escapeHtml,
+  MissingEmailConfigError,
+  paragraphsToHtml,
+  sendOwnerEmail,
+} from "@/lib/server/email";
+import { contactSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
-  try {
-    const { name, email, subject, message } = await request.json();
+  let payload: unknown;
 
-    // Validate required fields
-    if (!name || !email || !subject || !message) {
+  try {
+    payload = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 });
+  }
+
+  const parsed = contactSchema.safeParse(payload);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: parsed.error.issues[0]?.message || "Invalid contact form data" },
+      { status: 400 }
+    );
+  }
+
+  const { name, email, subject, message } = parsed.data;
+
+  try {
+    await sendOwnerEmail({
+      subject: `Contact Form: ${subject}`,
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
+      html: `
+        <h2>New contact form submission</h2>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
+        <h3>Message</h3>
+        ${paragraphsToHtml(message)}
+      `,
+    });
+
+    return NextResponse.json({ message: "Message sent successfully" });
+  } catch (error) {
+    console.error("Error sending contact email:", error);
+    if (error instanceof MissingEmailConfigError) {
       return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
+        { error: "Email is not configured yet." },
+        { status: 503 }
       );
     }
 
-    // Create transporter with Google credentials
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_APP_PASSWORD,
-      },
-    });
-
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER, // Send to yourself
-      replyTo: email,
-      subject: `Contact Form: ${subject}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        
-        Message:
-        ${message}
-      `,
-      html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
-
     return NextResponse.json(
-      { message: "Email sent successfully" },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to send message" },
       { status: 500 }
     );
   }

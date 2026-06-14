@@ -1,7 +1,5 @@
-"use client";
-
 import Home from "../home";
 
-export default function SyntheticV0PageForDeployment() {
+export default function HomePage() {
   return <Home />;
 }

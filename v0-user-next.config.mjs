@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     domains: ['v0.dev'],
-    unoptimized: true,
   },
 };
 

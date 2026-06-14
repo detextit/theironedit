@@ -1,54 +1,55 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { SiteFooter, SiteHeader } from "@/components/site/site-chrome";
+import { contactInfo } from "@/lib/content/site";
+
+type SubmitStatus = {
+  success?: boolean;
+  message?: string;
+};
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    success?: boolean;
-    message?: string;
-  }>({});
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>({});
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({});
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
     const formValues = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      subject: formData.get("subject") as string,
-      message: formData.get("message") as string,
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      subject: String(formData.get("subject") || ""),
+      message: String(formData.get("message") || ""),
     };
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formValues),
       });
-
       const data = await response.json();
 
-      if (response.ok) {
-        setSubmitStatus({
-          success: true,
-          message: "Thank you for your message! I'll get back to you soon.",
-        });
-        e.currentTarget.reset();
-      } else {
+      if (!response.ok) {
         setSubmitStatus({
           success: false,
           message: data.error || "Something went wrong. Please try again.",
         });
+        return;
       }
-    } catch (error) {
+
+      setSubmitStatus({
+        success: true,
+        message: "Thank you. Ajay will get back to you soon.",
+      });
+      form.reset();
+    } catch {
       setSubmitStatus({
         success: false,
         message: "Failed to send message. Please try again later.",
@@ -56,140 +57,121 @@ export default function Contact() {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 via-powder-blue to-gray-200 text-gray-800">
-      <div className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl font-bold mb-6 text-center">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700">
-              GET IN TOUCH
-            </span>
-          </h1>
-          <p className="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
-            Have questions about your fitness journey? Fill out the form below
-            and I'll get back to you as soon as possible.
+    <div className="min-h-screen bg-[#1a191b] text-[#eeeef0]">
+      <SiteHeader />
+      <main className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8 lg:py-20">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.5em] text-[#b5b2bc]">
+            Contact
           </p>
+          <h1 className="mt-5 text-5xl font-semibold leading-[0.98] tracking-[-0.05em] text-[#eeeef0] sm:text-6xl">
+            Have a question before you enroll?
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-[#b5b2bc]">
+            Send a note about coaching, programs, availability, or anything you
+            need to understand before starting.
+          </p>
+          <Link
+            href="/enroll"
+            className="mt-8 inline-flex rounded-full bg-[#eeeef0] px-7 py-4 font-semibold text-[#1a191b] transition hover:bg-[#d7d5dd]"
+          >
+            Or start enrollment
+          </Link>
 
-          <div className="max-w-3xl mx-auto">
-            <motion.form
-              className="glass-card p-8 rounded-2xl border border-indigo-100 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              onSubmit={handleSubmit}
-            >
-              {submitStatus.message && (
-                <div
-                  className={`mb-6 p-4 rounded-lg ${
-                    submitStatus.success
-                      ? "bg-green-100 text-green-800 border border-green-200"
-                      : "bg-red-100 text-red-800 border border-red-200"
-                  }`}
-                >
-                  {submitStatus.message}
-                </div>
-              )}
-
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-gray-700 mb-2 font-medium"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-gray-700 mb-2 font-medium"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                    placeholder="Your email"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="subject"
-                  className="block text-gray-700 mb-2 font-medium"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="message"
-                  className="block text-gray-700 mb-2 font-medium"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                  placeholder="Tell me about your fitness goals or questions..."
-                ></textarea>
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-indigo-500 to-indigo-700 hover:from-indigo-600 hover:to-indigo-800 text-white py-4 px-8 rounded-full font-bold text-center transition-all duration-300 flex items-center justify-center group disabled:opacity-70 disabled:cursor-not-allowed"
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+          <div className="mt-10 space-y-4 border-t border-white/10 pt-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#b5b2bc]">
+                Prefer to talk?
+              </p>
+              <a
+                href={contactInfo.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-[#eeeef0] transition hover:bg-[#eeeef0] hover:text-[#1a191b]"
               >
-                {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
-                {!isSubmitting && (
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                )}
-              </motion.button>
-            </motion.form>
-
-            <div className="mt-12 text-center">
-              <Link
-                href="/"
-                className="text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
-              >
-                ← Back to Home
-              </Link>
+                Book a free 30-min call →
+              </a>
             </div>
+            <p className="text-sm text-[#b5b2bc]">
+              Call or WhatsApp:{" "}
+              <a
+                href={contactInfo.phoneHref}
+                className="font-semibold text-[#eeeef0] underline-offset-2 hover:underline"
+              >
+                {contactInfo.phone}
+              </a>
+            </p>
           </div>
-        </motion.div>
-      </div>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-[2rem] border border-white/10 bg-[#232225] p-5 shadow-xl shadow-black/40 sm:p-8"
+        >
+          {submitStatus.message && (
+            <div
+              className={`mb-6 rounded-3xl p-4 text-sm ${
+                submitStatus.success
+                  ? "bg-emerald-50 text-emerald-800"
+                  : "bg-rose-50 text-rose-800"
+              }`}
+            >
+              {submitStatus.message}
+            </div>
+          )}
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-[#c9c7cf]">Name</span>
+              <input
+                name="name"
+                required
+                className="w-full rounded-2xl border border-white/10 bg-[#2b292d] px-4 py-3 text-[#eeeef0] placeholder:text-[#7c7a85] outline-none transition focus:border-[#b5b2bc] focus:ring-4 focus:ring-white/10"
+              />
+            </label>
+            <label className="space-y-2">
+              <span className="text-sm font-medium text-[#c9c7cf]">Email</span>
+              <input
+                name="email"
+                type="email"
+                required
+                className="w-full rounded-2xl border border-white/10 bg-[#2b292d] px-4 py-3 text-[#eeeef0] placeholder:text-[#7c7a85] outline-none transition focus:border-[#b5b2bc] focus:ring-4 focus:ring-white/10"
+              />
+            </label>
+          </div>
+
+          <label className="mt-5 block space-y-2">
+            <span className="text-sm font-medium text-[#c9c7cf]">Subject</span>
+            <input
+              name="subject"
+              required
+              className="w-full rounded-2xl border border-white/10 bg-[#2b292d] px-4 py-3 text-[#eeeef0] placeholder:text-[#7c7a85] outline-none transition focus:border-[#b5b2bc] focus:ring-4 focus:ring-white/10"
+            />
+          </label>
+
+          <label className="mt-5 block space-y-2">
+            <span className="text-sm font-medium text-[#c9c7cf]">Message</span>
+            <textarea
+              name="message"
+              rows={6}
+              required
+              className="w-full rounded-2xl border border-white/10 bg-[#2b292d] px-4 py-3 text-[#eeeef0] placeholder:text-[#7c7a85] outline-none transition focus:border-[#b5b2bc] focus:ring-4 focus:ring-white/10"
+            />
+          </label>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="mt-6 w-full rounded-full bg-[#eeeef0] px-6 py-4 font-semibold text-[#1a191b] transition hover:bg-[#d7d5dd] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isSubmitting ? "Sending..." : "Send message"}
+          </button>
+        </form>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
