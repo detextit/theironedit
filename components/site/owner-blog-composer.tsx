@@ -791,7 +791,7 @@ function BlogPreviewPane({
               return (
                 <div
                   key={index}
-                  className="rounded-[1.5rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-5 text-[#eeeef0]"
+                  className="whitespace-pre-line rounded-[1.5rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-5 text-[#eeeef0]"
                 >
                   {block.text
                     ? renderInline(block.text)
@@ -809,7 +809,7 @@ function BlogPreviewPane({
                   } marker:text-[#b5b2bc]`}
                 >
                   {block.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="pl-1">
+                    <li key={itemIndex} className="whitespace-pre-line pl-1">
                       {item ? renderInline(item) : "List item"}
                     </li>
                   ))}
@@ -817,7 +817,7 @@ function BlogPreviewPane({
               );
             }
             return (
-              <p key={index}>
+              <p key={index} className="whitespace-pre-line">
                 {block.text ? renderInline(block.text) : "Paragraph text."}
               </p>
             );

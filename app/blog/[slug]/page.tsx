@@ -103,7 +103,7 @@ export default async function BlogPostPage({
                   return (
                     <div
                       key={`callout-${index}`}
-                      className="rounded-[2rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-6 text-[#eeeef0] shadow-sm"
+                      className="whitespace-pre-line rounded-[2rem] border-l-4 border-[#b5b2bc] bg-[#232225] p-6 text-[#eeeef0] shadow-sm"
                     >
                       {renderInline(block.text)}
                     </div>
@@ -120,7 +120,10 @@ export default async function BlogPostPage({
                       } marker:text-[#b5b2bc]`}
                     >
                       {block.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="pl-1">
+                        <li
+                          key={itemIndex}
+                          className="whitespace-pre-line pl-1"
+                        >
                           {renderInline(item)}
                         </li>
                       ))}
@@ -129,7 +132,12 @@ export default async function BlogPostPage({
                 }
 
                 return (
-                  <p key={`paragraph-${index}`}>{renderInline(block.text)}</p>
+                  <p
+                    key={`paragraph-${index}`}
+                    className="whitespace-pre-line"
+                  >
+                    {renderInline(block.text)}
+                  </p>
                 );
               })}
             </div>
