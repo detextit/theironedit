@@ -25,12 +25,6 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/enroll"
-            className="rounded-full bg-[#eeeef0] px-4 py-2 text-[#1a191b] shadow-sm transition hover:bg-[#d7d5dd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b5b2bc]"
-          >
-            Start enrollment
-          </Link>
         </nav>
       </div>
     </header>
@@ -68,6 +62,9 @@ export function SiteFooter() {
           </Link>
           <Link href="/blog" className="hover:text-white">
             Blog
+          </Link>
+          <Link href="/speaking" className="hover:text-white">
+            Speaking
           </Link>
           <Link href="/contact" className="hover:text-white">
             Contact

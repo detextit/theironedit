@@ -2,6 +2,8 @@ export const siteLinks = [
   { href: "/gallery", label: "Gallery" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
+  { href: "/speaking", label: "Speaking" },
+  { href: "/enroll", label: "Enroll" },
 ];
 
 export const trainerImages = {
@@ -10,6 +12,12 @@ export const trainerImages = {
     alt: "Ajay Pal Singh, fitness and nutrition coach, in the gym",
     blurDataURL:
       "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAABwAQCdASoQAAsAA4BaJZ12AAGIAAD+87qCqpFQzyJqV7Uoy77fakhGmE7KiJvywAAAAA==",
+  },
+  speaker: {
+    src: "/ajay-speaker.webp",
+    alt: "Ajay Pal Singh speaking on stage",
+    blurDataURL:
+      "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADQAwCdASoQABcAPwFqrE8rJiQiMAgBYCAJYwC06CEnCNHLZg8qf+AA/o3VXj+smVYGsAAYrgP86vJLAfKO4IuCsxuTcKi9IJ8FjtyEbGeGlcUcVoQbe5W1ztxIyXD1fWY9KM5qAIndcp0VD38PxwSBErhLUgM2YGO5TVSUBjG18wGFF9ijlbqQAAA=",
   },
   mark: {
     src: "/ironEdit.webp",
@@ -182,3 +190,63 @@ export const methodPillars = [
     ],
   },
 ];
+
+export const speakingContent = {
+  hero: {
+    eyebrow: "Speaking & workshops",
+    title: "Bring the comeback story into your office.",
+    subtitle:
+      "Ajay Pal Singh speaks to teams about resilience, discipline, and rebuilding the body and mind at any age. Honest stories from decades in industry, his own turnaround in midlife, and years of coaching hundreds of people through real, sustainable change.",
+    primaryCta: { label: "Request a speaking date", href: "#inquire" },
+  },
+  topics: [
+    {
+      title: "Resilience and the comeback",
+      description:
+        "From hospital beds and burnout to marathons in my fifties. What it actually takes to start again when you have nothing left.",
+    },
+    {
+      title: "Discipline that survives real life",
+      description:
+        "Why motivation fails and how leaders, professionals, and teams build habits that hold through deadlines, travel, and stress.",
+    },
+    {
+      title: "Workplace wellness, without the gimmicks",
+      description:
+        "Practical nutrition, movement, and recovery for desk-bound teams. No fad diets, no shame, just what works for busy people.",
+    },
+    {
+      title: "Mindset for performance",
+      description:
+        "Lessons from coaching 300+ clients and competing as an amateur athlete past fifty. Equally useful for sport, sales floors, and boardrooms.",
+    },
+  ],
+  formats: [
+    {
+      title: "Keynote",
+      detail: "30 – 60 min",
+      description:
+        "A focused talk for offsites, town halls, and leadership gatherings. Includes Q&A.",
+    },
+    {
+      title: "Half-day workshop",
+      detail: "2 – 3 hours",
+      description:
+        "Interactive session for teams of 20 – 100. Mix of story, exercises, and a personal plan each attendee walks away with.",
+    },
+    {
+      title: "Fireside chat",
+      detail: "45 – 75 min",
+      description:
+        "Moderated conversation format, ideal for wellness weeks, founder series, and culture events.",
+    },
+  ],
+  audiences: [
+    "Corporate offsites and leadership retreats",
+    "Wellness weeks and HR-led programs",
+    "Founder and startup gatherings",
+    "Schools, colleges, and alumni events",
+    "Sports clubs and community groups",
+  ],
+};
+

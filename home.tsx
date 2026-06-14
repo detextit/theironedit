@@ -21,21 +21,37 @@ export default function Home() {
 
       <main>
         <section className="relative overflow-hidden bg-[#121113]">
-          <Image
-            src={trainerImages.hero.src}
-            alt={trainerImages.hero.alt}
-            fill
-            priority
-            placeholder="blur"
-            blurDataURL={trainerImages.hero.blurDataURL}
-            sizes="100vw"
-            className="object-cover object-[70%_top]"
-          />
-          <div className="absolute inset-0 bg-[#121113]/55 lg:hidden" />
-          <div className="absolute inset-0 hidden bg-gradient-to-r from-[#121113]/92 via-[#121113]/55 to-transparent lg:block" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121113]/80 via-transparent to-transparent" />
+          {/* Desktop / large screens: full-bleed background photo with text overlay */}
+          <div className="absolute inset-0 hidden lg:block">
+            <Image
+              src={trainerImages.hero.src}
+              alt={trainerImages.hero.alt}
+              fill
+              priority
+              placeholder="blur"
+              blurDataURL={trainerImages.hero.blurDataURL}
+              sizes="100vw"
+              className="object-cover object-[70%_top]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#121113]/92 via-[#121113]/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#121113]/80 via-transparent to-transparent" />
+          </div>
 
-          <div className="relative mx-auto flex min-h-[620px] max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:min-h-[760px] lg:px-8">
+          <div className="relative mx-auto flex max-w-7xl flex-col px-4 py-10 sm:px-6 lg:min-h-[760px] lg:justify-center lg:px-8 lg:py-16">
+            {/* Mobile / tablet: photo stacks above the copy as a clean card */}
+            <div className="relative mb-8 aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-[#232225] shadow-2xl shadow-black/40 sm:aspect-[16/10] lg:hidden">
+              <Image
+                src={trainerImages.hero.src}
+                alt={trainerImages.hero.alt}
+                fill
+                priority
+                placeholder="blur"
+                blurDataURL={trainerImages.hero.blurDataURL}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-[70%_top]"
+              />
+            </div>
+
             <div className="lg:max-w-2xl">
               <p className="text-xs font-semibold uppercase tracking-[0.55em] text-[#b5b2bc]">
                 Fitness coaching, edited for real life
@@ -321,6 +337,40 @@ export default function Home() {
         </section>
 
         <BlogPreview />
+
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#232225] p-8 shadow-xl shadow-black/40 sm:p-12">
+            <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.45em] text-[#b5b2bc]">
+                  Speaking & workshops
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#eeeef0] sm:text-4xl">
+                  Bring Ajay to speak to your team.
+                </h2>
+                <p className="mt-4 max-w-2xl text-[#b5b2bc] leading-7">
+                  Keynotes, half-day workshops, and fireside chats on
+                  resilience, discipline, and workplace wellness — for offices,
+                  founders, schools, and community groups.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <Link
+                  href="/speaking"
+                  className="inline-flex rounded-full bg-[#eeeef0] px-6 py-3 font-semibold text-[#1a191b] transition hover:bg-[#d7d5dd]"
+                >
+                  See speaking topics
+                </Link>
+                <Link
+                  href="/speaking#inquire"
+                  className="inline-flex rounded-full border border-white/25 px-6 py-3 font-semibold text-[#eeeef0] transition hover:bg-[#eeeef0] hover:text-[#1a191b]"
+                >
+                  Request a date
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid overflow-hidden rounded-[2.5rem] bg-[#232225] shadow-xl shadow-black/40 lg:grid-cols-[0.85fr_1.15fr]">
