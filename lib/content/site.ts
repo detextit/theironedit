@@ -89,7 +89,7 @@ export const contactInfo = {
   // HTML (deters scrapers/spam bots).
   phoneEncoded: "KzkxNjI4OTE3MzYwNg==",
   phoneDisplayEncoded: "KzkxIDYyODkxNzM2MDY=",
-  calendlyUrl: "https://calendly.com/theironedit/30min",
+  calendlyUrl: "https://calendly.com/theironedit",
 };
 
 export const galleryImages = [
